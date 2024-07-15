@@ -128,7 +128,7 @@ const Page18 = () => {
           </thead>
 
           <tbody className="border-b-2 border-gray-800">
-            {currentData.map((row) => (
+            {currentData.map((row, index) => (
               <tr key={row.number}>
                 <td className="py-2 border-r border-collapse border-gray-400  ">
                   <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
@@ -163,6 +163,15 @@ const Page18 = () => {
             ))}
           </tbody>
         </table>
+
+        <div className="flex items-center gap-9 self-start mt-3">
+          <button className="bg-zinc-200 py-1 px-2 rounded-md font-semibold">
+            선택 설정
+          </button>
+          <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
+            엑셀 다운로드
+          </button>
+        </div>
 
         <div className=" flex items-center justify-center mb-6 h-[60px]">
           <button
