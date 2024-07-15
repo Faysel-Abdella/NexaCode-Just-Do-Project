@@ -128,7 +128,7 @@ const Page18 = () => {
           </thead>
 
           <tbody className="border-b-2 border-gray-800">
-            {currentData.map((row, index) => (
+            {currentData.map((row) => (
               <tr key={row.number}>
                 <td className="py-2 border-r border-collapse border-gray-400  ">
                   <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
