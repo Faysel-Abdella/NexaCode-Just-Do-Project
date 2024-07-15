@@ -1,11 +1,29 @@
+import { useState } from "react";
+
 import CustomSelectOptions from "../components/CustomSelectOptions";
 
 import calender from "../assets/calender.png";
+import page18Data from "../data/tablesData/page18";
+import forwardArrow from "../assets/forwardArrow.svg";
+import prevArrow from "../assets/prevArrow.svg";
 
 const Page18 = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(page18Data.rows18.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const currentData = page18Data.rows18.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <section>
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between mb-3">
         <article className="flex flex-col gap-1">
           <div className="flex gap-2  font-semibold text-[18px] ">
             <h2>전체회원 :</h2>
@@ -71,6 +89,115 @@ const Page18 = () => {
           </button>
         </article>
       </header>
+
+      <main className="flex flex-col justify-center items-center">
+        <table>
+          <thead>
+            <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
+              <th className="text-center px-5 border-r border-gray-400">
+                <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
+              </th>
+              {page18Data.columns18.map((item) => (
+                <th
+                  key={item}
+                  className={`text-center border-r border-gray-400 ${
+                    item == "Purpose" ? "border-r-0" : ""
+                  }`}
+                >
+                  <p
+                    className={`
+                        ${
+                          item === "Connected Country" ||
+                          item === "Drill Achievement (times)"
+                            ? ""
+                            : "text-nowrap"
+                        }
+                        ${
+                          item === "Drill Achievement (times)"
+                            ? "w-[140px]"
+                            : "px-5"
+                        }
+                        ${item === "Connected Country" ? "w-[130px] " : ""}
+                        `}
+                  >
+                    {item} ▼
+                  </p>
+                </th>
+              ))}
+            </tr>
+          </thead>
+
+          <tbody className="border-b-2 border-gray-800">
+            {currentData.map((row) => (
+              <tr key={row.number}>
+                <td className="py-2 border-r border-collapse border-gray-400  ">
+                  <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
+                </td>
+                <td className=" border-r border-gray-400 ">{row.number}</td>
+                <td className="text-left  px-4 border-r border-collapse border-gray-400 ">
+                  {row.name}
+                </td>
+                <td className="text-left px-3  border-r border-collapse border-gray-400 ">
+                  {row.idOrEmail}
+                </td>
+                <td className="border-r border-collapse border-gray-400">
+                  {row.status}
+                </td>
+                <td className="border-r border-collapse border-gray-400">
+                  {row.connectedCountry}
+                </td>
+                <td className="border-r border-collapse border-gray-400">
+                  {row.signUpDate}
+                </td>
+                <td className="border-r border-collapse border-gray-400">
+                  {row.paidMember}
+                </td>
+                <td className="border-r border-collapse border-gray-400">
+                  {row.lastAccess}
+                </td>
+                <td className="border-r border-collapse border-gray-400">
+                  {row.drillAchievement}
+                </td>
+                <td className="px-2">{row.Purpose}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className=" flex items-center justify-center mb-6 h-[60px]">
+          <button
+            className={`mr-2 p-2 ${
+              currentPage === 1 ? "cursor-not-allowed" : " hover:bg-gray-300"
+            } text-white  rounded-full`}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            <img src={prevArrow} alt="something" />
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`mr-2 p-0 ${
+                currentPage === page ? "text-black" : "text-gray-400"
+              } mx-2 text-medium font-medium  rounded-full`}
+              onClick={() => handlePageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            className={`ml-2 p-2 ${
+              currentPage === totalPages
+                ? " cursor-not-allowed"
+                : " hover:bg-gray-300"
+            } text-white rounded-full`}
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            <img src={forwardArrow} alt="arrow" />
+          </button>
+        </div>
+      </main>
     </section>
   );
 };

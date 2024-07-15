@@ -1,15 +1,15 @@
-const columns18 = {
-  number: "No",
-  name: "Name",
-  idOrEmail: "ID(email)",
-  status: "Status",
-  connectedCountry: "Connected Country",
-  signUpDate: "Sign up date",
-  paidMember: "Paid Member",
-  lastAccess: "Last access",
-  drillAchievement: "Drill Achievement (times)",
-  Purpose: "Purpose",
-};
+const columns18 = [
+  "No.",
+  "Name",
+  "ID(email)",
+  "Status",
+  "Connected Country",
+  "Sign up date",
+  "Paid Member",
+  "Last access",
+  "Drill Achievement (times)",
+  "Purpose",
+];
 
 const rows18: {
   number: number;
