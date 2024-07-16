@@ -11,10 +11,7 @@ const CustomModal = ({
   onClose: () => void;
   children: React.ReactNode;
 }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(isOpen);
-
   const handleModalClose = () => {
-    setModalIsOpen(false);
     onClose();
   };
 
