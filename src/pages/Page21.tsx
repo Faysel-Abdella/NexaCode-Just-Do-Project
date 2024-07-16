@@ -110,8 +110,8 @@ const Page21 = () => {
               </div>
             </div>
 
-            <div className="flex  items-center gap-20 pt-5">
-              <h3 className="font-semibold text-[16px]">메모</h3>
+            <div className="flex  gap-20 pt-5">
+              <h3 className="font-semibold text-[16px] ">메모</h3>
               <div>
                 <textarea className="w-[400px] h-[100px] border-2 border-gray-400 p-2"></textarea>
               </div>
