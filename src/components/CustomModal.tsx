@@ -1,7 +1,5 @@
 import Modal from "react-modal";
 
-import React, { useState } from "react";
-
 const CustomModal = ({
   isOpen,
   onClose,
