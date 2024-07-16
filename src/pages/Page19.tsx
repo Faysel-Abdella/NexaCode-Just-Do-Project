@@ -4,6 +4,9 @@ import profile from "../assets/profile.png";
 import korea from "../assets/korea-flag.svg";
 import canada from "../assets/canada.svg";
 
+import page19Data from "../data/tablesData/page19";
+import page20Data from "../data/tablesData/page20";
+
 const Page19 = () => {
   const [showProfile, setShowProfile] = useState<boolean>(false);
 
@@ -69,7 +72,7 @@ const Page19 = () => {
               </h3>
               <p className="py-2 px-3">2022. 12. 22 21:06</p>
             </div>
-            <div className="flex  border-b border-gray-500 border-collapse">
+            <div className="flex  ">
               <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Language
               </h3>
@@ -124,6 +127,197 @@ const Page19 = () => {
               </button>
             </div>
           )}
+        </div>
+
+        {/* 상태 정보 | 상태 정보 | 상태 정보 | 상태 정보*/}
+        <div className=" mt-3 flex gap-10 border-b-2 border-gray-400 pb-2 ">
+          <h2 className="font-semibold text-[24px] text-gray-500">상태 정보</h2>
+          <div className="w-[70%] border border-gray-500 border-collapse">
+            <div className="flex border-b border-gray-500 border-collapse">
+              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                Status
+              </h3>
+              <p className="py-2 px-3">정상 / 정지 / 신고</p>
+            </div>
+            <div className="flex border-b border-gray-500 border-collapse">
+              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                메모
+              </h3>
+              <p className="py-2 px-3">
+                불건전 콘텐츠 공유 (‘ID정지’ 경우 메모 표시)
+              </p>
+            </div>
+            <div className="flex ">
+              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                신고 내용
+              </h3>
+              <p className="py-2 px-3"></p>
+            </div>
+          </div>
+          <div className="self-center ml-3 cursor-pointer">
+            <button className="bg-zinc-300 py-2 px-7 rounded-md">
+              ID 설정{" "}
+            </button>
+          </div>
+        </div>
+
+        {/* 그룹 정보 | 그룹 정보 | 그룹 정보 | 그룹 정보 */}
+        <div className="flex gap-10 mt-2">
+          <h2 className="font-semibold text-[24px] text-gray-500">그룹 정보</h2>
+
+          <div>
+            {/* Created Groups */}
+            <div className="flex flex-col items-start">
+              <h2 className="font-semibold text-[20px]">
+                Groups you Created : 2
+              </h2>
+              <div className="ml-44 mt-2">
+                <table className="">
+                  <thead>
+                    <tr className="bg-gray-500 text-white ">
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        No.
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Status
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Group Name
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Members
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Creator
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Description
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {page19Data.createdGroupData.map((group) => (
+                      <tr>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.number}
+                        </td>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.status}
+                        </td>
+                        <td className="px-3 py-1 w-[250px] border-2 border-gray-200 border-collapse">
+                          {group.groupName}
+                        </td>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.members}
+                        </td>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.creator}
+                        </td>
+                        <td className="px-3 py-1 w-[400px] border-2 border-gray-200 border-collapse text-left">
+                          {group.description}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {/* Joined Groups */}
+            <div className="flex flex-col items-start ">
+              <h2 className="font-semibold text-[20px] pb-5 pt-10">
+                Groups you Joined : 3
+              </h2>
+              <div className="ml-44 mt-2">
+                <table className="">
+                  <thead>
+                    <tr className="bg-gray-500 text-white ">
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        No.
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Status
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Group Name
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Members
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Creator
+                      </th>
+                      <th className="px-3 border-2 border-gray-200 border-collapse">
+                        Description
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {page19Data.joinedGroupData.map((group) => (
+                      <tr>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.number}
+                        </td>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.status}
+                        </td>
+                        <td className="px-3 py-1 w-[250px] border-2 border-gray-200 border-collapse">
+                          {group.groupName}
+                        </td>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.members}
+                        </td>
+                        <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
+                          {group.creator}
+                        </td>
+                        <td className="px-3 py-1 w-[400px] border-2 border-gray-200 border-collapse text-left">
+                          {group.description}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Connected IDs : 14 */}
+            <div className="flex flex-col items-start ">
+              <h2 className="font-semibold text-[20px] pb-5 pt-10">
+                Connected IDs : 14Connected IDs : 14
+              </h2>
+              <div className="ml-44 mt-2">
+                <table className="">
+                  <thead>
+                    <tr className="bg-gray-500 text-white ">
+                      <th className="px-3 border-r-2 border-gray-200 border-collapse">
+                        No.
+                      </th>
+                      <th className="px-3 border-r-2 border-gray-200 border-collapse">
+                        Name
+                      </th>
+                      <th className="px-3 ">ID (email)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {page20Data.map((group) => (
+                      <tr>
+                        <td className="px-3 py-1 border-b-2 border-gray-400 border-collapse">
+                          {group.number}
+                        </td>
+
+                        <td className="px-3 py-1 w-[250px] border-b-2 border-gray-400 border-collapse">
+                          {group.name}
+                        </td>
+
+                        <td className="px-3 py-1 w-[400px] border-b-2 border-gray-400 border-collapse ">
+                          {group.email}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </section>

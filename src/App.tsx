@@ -13,7 +13,7 @@ function App() {
       <Page18 />
       <div className="flex justify-center items-center py-4 mb-10">
         <h2 className="font-bold text-4xl border border-gray-950 w-[500px]  py-2">
-          Page Number 19 👇👇👇
+          Page Number 19 & 20 👇👇👇
         </h2>
       </div>
       <Page19 />
