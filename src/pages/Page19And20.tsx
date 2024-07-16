@@ -280,7 +280,7 @@ const Page19 = () => {
             </div>
 
             {/* Connected IDs : 14 */}
-            <div className="flex flex-col items-start ">
+            <div className="flex flex-col items-start border-b-[3px] border-gray-600 pb-7">
               <h2 className="font-semibold text-[20px] pb-5 pt-10">
                 Connected IDs : 14Connected IDs : 14
               </h2>
@@ -316,6 +316,18 @@ const Page19 = () => {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            {/* Previous and Next Buttons */}
+            <div className="flex items-center justify-between mt-3">
+              <button className="flex items-center gap-3 py-1 px-4 rounded-md bg-zinc-200 text-gray-600">
+                <p>&lt;</p>
+                <p>이전</p>
+              </button>
+              <button className="flex items-center gap-3  py-1 px-4 rounded-md bg-zinc-200 text-gray-600">
+                <p>다음</p>
+                <p>&gt;</p>
+              </button>
             </div>
           </div>
         </div>
