@@ -1,40 +1,45 @@
 import { useState } from "react";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
+import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
-import page18Data from "../data/tablesData/page18";
+
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
+import page22Data from "../data/tablesData/page22";
 
-const Page18 = () => {
+const Page22 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [confirmationModalOpen, setConfirmationModalOpen] =
+    useState<boolean>(false);
+
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page18Data.rows18.length / itemsPerPage);
+  const totalPages = Math.ceil(page22Data.page22Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page18Data.rows18.slice(startIndex, endIndex);
+  const currentData = page22Data.page22Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
+  const handleOpenConfirmationModal = () => {
+    setConfirmationModalOpen(true);
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setConfirmationModalOpen(false);
+  };
+
   return (
     <section>
       <header className="flex items-center justify-between mb-3">
-        <article className="flex flex-col gap-1">
+        <article className="flex flex-col self-end gap-1 ">
           <div className="flex gap-2  font-semibold text-[18px] ">
             <h2>전체회원 :</h2>
-            <h2>3,560,000</h2>
-          </div>
-          <div className="flex gap-2 font-semibold text-[18px] ">
-            <h2>전체유료회원 :</h2>
-            <h2>23,470</h2>
-          </div>
-          <div className="flex gap-2 font-semibold text-[18px] ">
-            <h2>검색 된 항목 :</h2>
             <h2>3,560,000</h2>
           </div>
         </article>
@@ -61,11 +66,6 @@ const Page18 = () => {
             </div>
             <div className="flex gap-2 items-center">
               <CustomSelectOptions
-                label="Status"
-                options={["정상", "정지"]}
-                outerStyles="w-[100px]"
-              />
-              <CustomSelectOptions
                 label="Connected Country"
                 options={["Korea", "USA", "China"]}
                 outerStyles="w-[200px]"
@@ -75,14 +75,10 @@ const Page18 = () => {
                 options={["New", "Later"]}
                 outerStyles="w-[100px]"
               />
-              <CustomSelectOptions
-                label="Purpose"
-                options={["For studying", "For fun", "For better business"]}
-                outerStyles="w-[150px]"
-              />
+
               <input
-                className="border border-gray-950 py-[2px] px-1 focus:outline-none"
-                placeholder="Name, ID search"
+                className="w-[300px] border border-gray-950 py-[2px] px-1 focus:outline-none"
+                placeholder="Name, ID, Admin ID, Note search"
               />
             </div>
           </div>
@@ -100,7 +96,7 @@ const Page18 = () => {
               <th className="text-center px-5 border-r border-gray-400">
                 <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
               </th>
-              {page18Data.columns18.map((item) => (
+              {page22Data.page22Columns.map((item) => (
                 <th
                   key={item}
                   className={`text-center border-r border-gray-400 ${
@@ -143,33 +139,35 @@ const Page18 = () => {
                 <td className="text-left px-3  border-r border-collapse border-gray-400 ">
                   {row.idOrEmail}
                 </td>
-                <td className="border-r border-collapse border-gray-400">
-                  {row.status}
-                </td>
-                <td className="border-r border-collapse border-gray-400">
+                <td className="border-r px-3 border-collapse border-gray-400">
                   {row.connectedCountry}
                 </td>
-                <td className="border-r border-collapse border-gray-400">
+                <td className="border-r px-3 border-collapse border-gray-400">
                   {row.signUpDate}
                 </td>
-                <td className="border-r border-collapse border-gray-400">
+                <td className="border-r px-3 border-collapse border-gray-400">
                   {row.paidMember}
                 </td>
-                <td className="border-r border-collapse border-gray-400">
+                <td className="border-r px-3 border-collapse border-gray-400">
                   {row.lastAccess}
                 </td>
-                <td className="border-r border-collapse border-gray-400">
-                  {row.drillAchievement}
+                <td className="border-r px-3 border-collapse border-gray-400">
+                  {row.adminId}
                 </td>
-                <td className="px-2">{row.Purpose}</td>
+                <td className="border-r w-[250px] text-left px-2 border-collapse border-gray-400">
+                  {row.note}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
 
         <div className="flex items-center gap-9 self-start mt-3">
-          <button className="bg-zinc-200 py-1 px-2 rounded-md font-semibold">
-            선택 설정
+          <button
+            className="bg-zinc-200 py-1 px-2 rounded-md font-semibold"
+            onClick={handleOpenConfirmationModal}
+          >
+            완전 삭제
           </button>
           <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
             엑셀 다운로드
@@ -210,8 +208,50 @@ const Page18 = () => {
           </button>
         </div>
       </main>
+
+      <CustomModal
+        isOpen={confirmationModalOpen}
+        onClose={handleCloseConfirmationModal}
+      >
+        <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
+          <div className=" border-b-2 border-gray-400 ">
+            <div className="flex justify-between items-center px-2">
+              <h3>완전 삭제</h3>
+              <button
+                className="font-semibold text-[16px]"
+                onClick={handleCloseConfirmationModal}
+              >
+                X
+              </button>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="">
+              <>
+                <p className="text-center mt-3">완전 삭제 시 해당 데이터가</p>
+                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
+                <p className="text-center mt-6">삭제 하시겠습니까?</p>
+                <div className="flex justify-center items-center gap-3 mt-3">
+                  <button
+                    className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    취소
+                  </button>
+                  <button
+                    className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    ID 삭제
+                  </button>
+                </div>
+              </>
+            </div>
+          </div>
+        </section>
+      </CustomModal>
     </section>
   );
 };
 
-export default Page18;
+export default Page22;
