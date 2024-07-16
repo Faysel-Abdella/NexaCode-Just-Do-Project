@@ -93,7 +93,7 @@ const Page25 = () => {
 
             {/* Profile Details (Zoom Out) */}
             {showProfile && (
-              <div className="relative h-[250px] w-[250px] flex items-center justify-center ml-3 self-center  bg-slate-200">
+              <div className="relative h-[250px] w-[230px] flex items-center justify-center ml-3 self-center  bg-slate-200">
                 <p>Zooming out</p>
                 <button
                   className="absolute top-1 right-2 text-[24px]"

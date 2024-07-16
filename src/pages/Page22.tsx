@@ -90,11 +90,11 @@ const Page22 = () => {
       </header>
 
       <main>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto pb-5">
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="text-center px-5 border-r border-gray-400">
+                <th className="text-center py-1 px-5 border-r border-gray-400">
                   <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
                 </th>
                 {page22Data.page22Columns.map((item) => (

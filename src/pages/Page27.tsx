@@ -6,33 +6,38 @@ import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
 
-import page24Data from "../data/tablesData/page24";
+import page27Data from "../data/tablesData/page27";
+import CustomModal from "../components/CustomModal";
 
-const Page24 = () => {
+const Page27 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [confirmationModalOpen, setConfirmationModalOpen] =
+    useState<boolean>(false);
+
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page24Data.page24Rows.length / itemsPerPage);
+  const totalPages = Math.ceil(page27Data.page27Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page24Data.page24Rows.slice(startIndex, endIndex);
+  const currentData = page27Data.page27Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  const handleOpenConfirmationModal = () => {
+    setConfirmationModalOpen(true);
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setConfirmationModalOpen(false);
+  };
+
   return (
     <section>
       <header className="flex items-center justify-between mb-3">
-        <article className="flex flex-col gap-1">
-          <div className="flex gap-2  font-semibold text-[18px] ">
-            <h2>Speaking :</h2>
-            <h2>760,943</h2>
-          </div>
-          <div className="flex gap-2 font-semibold text-[18px] ">
-            <h2>Voca :</h2>
-            <h2>23,470</h2>
-          </div>
+        <article className="flex self-end flex-col gap-1">
           <div className="flex gap-2 font-semibold text-[18px] ">
             <h2>검색 된 항목 :</h2>
             <h2>383</h2>
@@ -70,25 +75,16 @@ const Page24 = () => {
                 options={["Speaking", "Voca"]}
                 outerStyles="w-[100px]"
               />
-              <CustomSelectOptions
-                label="Status"
-                options={["정상", "정지"]}
-                outerStyles="w-[100px]"
-              />
+
               <CustomSelectOptions
                 label="Category"
                 options={["Life", "School"]}
                 outerStyles="w-[100px]"
               />
-              <CustomSelectOptions
-                label="Connected Country"
-                options={["Korea", "USA", "China"]}
-                outerStyles="w-[200px]"
-              />
 
               <input
                 className="w-[250px] border border-gray-950 py-[2px] px-1 focus:outline-none"
-                placeholder="Title,Code, Creator, ID search"
+                placeholder="Title,Code, Name, ID search"
               />
             </div>
           </div>
@@ -104,10 +100,10 @@ const Page24 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="text-center py-1 px-5 border-r border-gray-400">
+                <th className="text-center py-2 px-5 border-r border-gray-400">
                   <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
                 </th>
-                {page24Data.page24Columns.map((item) => (
+                {page27Data.page27Columns.map((item) => (
                   <th
                     key={item}
                     className={`text-center border-r border-gray-400 px-3 ${
@@ -147,11 +143,9 @@ const Page24 = () => {
                     {row.type}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.status}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
                     {row.category}
                   </td>
+
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.contentsCode}
                   </td>
@@ -162,9 +156,6 @@ const Page24 = () => {
                     {row.size}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.downloads}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
                     {row.creationDate}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
@@ -173,7 +164,10 @@ const Page24 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.idOrEmail}
                   </td>
-                  <td className="px-2">{row.connectedCountry}</td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    {row.adminId}
+                  </td>
+                  <td className="px-2">{row.note}</td>
                 </tr>
               ))}
             </tbody>
@@ -181,8 +175,11 @@ const Page24 = () => {
         </div>
 
         <div className="flex items-center gap-9 self-start mt-3">
-          <button className="bg-zinc-200 py-1 px-2 rounded-md font-semibold">
-            선택 설정
+          <button
+            className="bg-zinc-200 py-1 px-2 rounded-md font-semibold"
+            onClick={handleOpenConfirmationModal}
+          >
+            완전 삭제
           </button>
           <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
             엑셀 다운로드
@@ -223,8 +220,50 @@ const Page24 = () => {
           </button>
         </div>
       </main>
+
+      <CustomModal
+        isOpen={confirmationModalOpen}
+        onClose={handleCloseConfirmationModal}
+      >
+        <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
+          <div className=" border-b-2 border-gray-400 ">
+            <div className="flex justify-between items-center px-2">
+              <h3>완전 삭제</h3>
+              <button
+                className="font-semibold text-[16px]"
+                onClick={handleCloseConfirmationModal}
+              >
+                X
+              </button>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="">
+              <>
+                <p className="text-center mt-3">완전 삭제 시 해당 데이터가</p>
+                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
+                <p className="text-center mt-6">삭제 하시겠습니까?</p>
+                <div className="flex justify-center items-center gap-3 mt-3">
+                  <button
+                    className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    취소
+                  </button>
+                  <button
+                    className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    ID 삭제
+                  </button>
+                </div>
+              </>
+            </div>
+          </div>
+        </section>
+      </CustomModal>
     </section>
   );
 };
 
-export default Page24;
+export default Page27;

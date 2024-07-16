@@ -66,7 +66,7 @@ const Page26 = () => {
           </div>
 
           <h3 className="text-left py-3">선택 4</h3>
-          <div className="border-b-2 border-gray-600 pb-2 overflow-x-auto">
+          <div className="border-b-2 border-gray-600 pb-2 overflow-x-auto ">
             {selectedModal === "multiple" && (
               <table className="w-full">
                 <thead>
