@@ -89,22 +89,23 @@ const Page22 = () => {
         </article>
       </header>
 
-      <main className="flex flex-col justify-center items-center">
-        <table>
-          <thead>
-            <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-              <th className="text-center px-5 border-r border-gray-400">
-                <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
-              </th>
-              {page22Data.page22Columns.map((item) => (
-                <th
-                  key={item}
-                  className={`text-center border-r border-gray-400 ${
-                    item == "Purpose" ? "border-r-0" : ""
-                  }`}
-                >
-                  <p
-                    className={`
+      <main>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
+                <th className="text-center px-5 border-r border-gray-400">
+                  <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
+                </th>
+                {page22Data.page22Columns.map((item) => (
+                  <th
+                    key={item}
+                    className={`text-center border-r border-gray-400 ${
+                      item == "Purpose" ? "border-r-0" : ""
+                    }`}
+                  >
+                    <p
+                      className={`
                         ${
                           item === "Connected Country" ||
                           item === "Drill Achievement (times)"
@@ -118,49 +119,50 @@ const Page22 = () => {
                         }
                         ${item === "Connected Country" ? "w-[130px] " : ""}
                         `}
-                  >
-                    {item} ▼
-                  </p>
-                </th>
-              ))}
-            </tr>
-          </thead>
-
-          <tbody className="border-b-2 border-gray-800">
-            {currentData.map((row) => (
-              <tr key={row.number}>
-                <td className="py-2 border-r border-collapse border-gray-400  ">
-                  <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
-                </td>
-                <td className=" border-r border-gray-400 ">{row.number}</td>
-                <td className="text-left  px-4 border-r border-collapse border-gray-400 ">
-                  {row.name}
-                </td>
-                <td className="text-left px-3  border-r border-collapse border-gray-400 ">
-                  {row.idOrEmail}
-                </td>
-                <td className="border-r px-3 border-collapse border-gray-400">
-                  {row.connectedCountry}
-                </td>
-                <td className="border-r px-3 border-collapse border-gray-400">
-                  {row.signUpDate}
-                </td>
-                <td className="border-r px-3 border-collapse border-gray-400">
-                  {row.paidMember}
-                </td>
-                <td className="border-r px-3 border-collapse border-gray-400">
-                  {row.lastAccess}
-                </td>
-                <td className="border-r px-3 border-collapse border-gray-400">
-                  {row.adminId}
-                </td>
-                <td className="border-r w-[250px] text-left px-2 border-collapse border-gray-400">
-                  {row.note}
-                </td>
+                    >
+                      {item} ▼
+                    </p>
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody className="border-b-2 border-gray-800">
+              {currentData.map((row) => (
+                <tr key={row.number}>
+                  <td className="py-2 border-r border-collapse border-gray-400  ">
+                    <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
+                  </td>
+                  <td className=" border-r border-gray-400 ">{row.number}</td>
+                  <td className="text-left  px-4 border-r border-collapse border-gray-400 ">
+                    {row.name}
+                  </td>
+                  <td className="text-left px-3  border-r border-collapse border-gray-400 ">
+                    {row.idOrEmail}
+                  </td>
+                  <td className="border-r px-3 border-collapse border-gray-400">
+                    {row.connectedCountry}
+                  </td>
+                  <td className="border-r px-3 border-collapse border-gray-400">
+                    {row.signUpDate}
+                  </td>
+                  <td className="border-r px-3 border-collapse border-gray-400">
+                    {row.paidMember}
+                  </td>
+                  <td className="border-r px-3 border-collapse border-gray-400">
+                    {row.lastAccess}
+                  </td>
+                  <td className="border-r px-3 border-collapse border-gray-400">
+                    {row.adminId}
+                  </td>
+                  <td className="border-r w-[250px] text-left px-2 border-collapse border-gray-400">
+                    {row.note}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <div className="flex items-center gap-9 self-start mt-3">
           <button
