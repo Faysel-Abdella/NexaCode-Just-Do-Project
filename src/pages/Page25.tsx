@@ -83,11 +83,26 @@ const Page25 = () => {
               <p className="py-2 px-3">영국</p>
             </div>
           </div>
-          {/* Here profile */}
-          <div className="ml-3 cursor-pointer" onClick={showProfileHandler}>
-            <div className="flex justify-center items-center h-[150px] w-[150px] bg-slate-100">
-              Image (click here)
+          <div className="flex flex-col gap-4">
+            {/* Here profile */}
+            <div className="ml-3 cursor-pointer" onClick={showProfileHandler}>
+              <div className="flex justify-center items-center h-[150px] w-[150px] bg-slate-100">
+                Image (click here)
+              </div>
             </div>
+
+            {/* Profile Details (Zoom Out) */}
+            {showProfile && (
+              <div className="relative h-[250px] w-[250px] flex items-center justify-center ml-3 self-center  bg-slate-200">
+                <p>Zooming out</p>
+                <button
+                  className="absolute top-1 right-2 text-[24px]"
+                  onClick={hideProfileHandler}
+                >
+                  x
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
