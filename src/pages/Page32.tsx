@@ -6,21 +6,21 @@ import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
 
-import page27Data from "../data/tablesData/page27";
+import page32Data from "../data/tablesData/page32";
 import CustomModal from "../components/CustomModal";
 
-const Page27 = () => {
+const Page32 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page27Data.page27Rows.length / itemsPerPage);
+  const totalPages = Math.ceil(page32Data.page32Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page27Data.page27Rows.slice(startIndex, endIndex);
+  const currentData = page32Data.page32Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -76,15 +76,9 @@ const Page27 = () => {
                 outerStyles="w-[120px]"
               />
 
-              <CustomSelectOptions
-                label="Category"
-                options={["Life", "School"]}
-                outerStyles="w-[120px]"
-              />
-
               <input
-                className="w-[250px] border border-gray-950 py-[2px] px-1 focus:outline-none"
-                placeholder="Title,Code, Name, ID search"
+                className="w-[350px] border border-gray-950 py-[2px] px-1 focus:outline-none"
+                placeholder="Group Name, Code, Creator, ID search"
               />
             </div>
           </div>
@@ -103,7 +97,7 @@ const Page27 = () => {
                 <th className="text-center py-2 px-5 border-r border-gray-400">
                   <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
                 </th>
-                {page27Data.page27Columns.map((item) => (
+                {page32Data.page32Columns.map((item) => (
                   <th
                     key={item}
                     className={`text-center border-r border-gray-400 px-3`}
@@ -111,10 +105,13 @@ const Page27 = () => {
                     <p
                       className={`
                         ${
-                          item === "Connected Country"
+                          item === "Speaking Contents"
                             ? "w-[130px]"
-                            : "text-nowrap"
+                            : item !== "No. of Member"
+                            ? "text-nowrap"
+                            : ""
                         }
+                        ${item === "No. of Member" ? "w-[100px]" : ""}
                     `}
                     >
                       {item} ▼
@@ -135,23 +132,23 @@ const Page27 = () => {
                     {row.language}
                   </td>
                   <td className="text-left text-nowrap  px-3  border-r border-collapse border-gray-400 ">
-                    {row.title}
+                    {row.groupName}
                   </td>
+
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.type}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.category}
-                  </td>
-
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.contentsCode}
+                    {row.groupCode}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.noOfContents}
+                    {row.noOfMembers}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.size}
+                    {row.speakingContents}
+                  </td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    {row.vocaContents}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.creationDate}
@@ -159,13 +156,13 @@ const Page27 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.creator}
                   </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
+                  <td className="px-3 text-left border-r border-collapse border-gray-400">
                     {row.idOrEmail}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.adminId}
                   </td>
-                  <td className="px-2 border-r border-collapse border-gray-400">
+                  <td className="px-2 min-w-[250px] text-left border-r border-collapse border-gray-400">
                     {row.note}
                   </td>
                 </tr>
@@ -266,4 +263,4 @@ const Page27 = () => {
   );
 };
 
-export default Page27;
+export default Page32;

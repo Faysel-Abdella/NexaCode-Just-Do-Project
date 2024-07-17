@@ -28,8 +28,16 @@ const Page29 = () => {
       <header className="flex items-center justify-between mb-3">
         <article className="flex self-end flex-col gap-1">
           <div className="flex gap-2 font-semibold text-[18px] ">
+            <h2>전체 그룹 :</h2>
+            <h2>2,349</h2>
+          </div>
+          <div className="flex gap-2 font-semibold text-[18px] ">
+            <h2>비밀 그룹 :</h2>
+            <h2>532</h2>
+          </div>
+          <div className="flex gap-2 font-semibold text-[18px] ">
             <h2>검색 된 항목 :</h2>
-            <h2>383</h2>
+            <h2>200</h2>
           </div>
         </article>
 
@@ -57,23 +65,23 @@ const Page29 = () => {
               <CustomSelectOptions
                 label="Language"
                 options={["Korean", "Arabic"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[150px]"
               />
               <CustomSelectOptions
                 label="Type"
                 options={["Speaking", "Voca"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[120px]"
               />
 
               <CustomSelectOptions
-                label="Category"
+                label="Status"
                 options={["Life", "School"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[120px]"
               />
 
               <input
-                className="w-[250px] border border-gray-950 py-[2px] px-1 focus:outline-none"
-                placeholder="Title,Code, Name, ID search"
+                className="w-[350px] border border-gray-950 py-[2px] px-1 focus:outline-none"
+                placeholder="Group Name, Code, Creator, ID search"
               />
             </div>
           </div>
@@ -154,7 +162,9 @@ const Page29 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.creator}
                   </td>
-                  <td className="px-2">{row.idOrEmail}</td>
+                  <td className="px-2 border-r border-collapse border-gray-400">
+                    {row.idOrEmail}
+                  </td>
                 </tr>
               ))}
             </tbody>

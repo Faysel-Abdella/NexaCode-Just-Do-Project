@@ -144,25 +144,27 @@ const Page18 = () => {
                   <td className="text-left px-3  border-r border-collapse border-gray-400 ">
                     {row.idOrEmail}
                   </td>
-                  <td className="border-r border-collapse border-gray-400">
+                  <td className="px-2 border-r border-collapse border-gray-400">
                     {row.status}
                   </td>
                   <td className="border-r border-collapse border-gray-400">
                     {row.connectedCountry}
                   </td>
-                  <td className="border-r border-collapse border-gray-400">
+                  <td className="px-2 border-r border-collapse border-gray-400">
                     {row.signUpDate}
                   </td>
-                  <td className="border-r border-collapse border-gray-400">
+                  <td className="px-2 border-r border-collapse border-gray-400">
                     {row.paidMember}
                   </td>
-                  <td className="border-r border-collapse border-gray-400">
+                  <td className="px-2 border-r border-collapse border-gray-400">
                     {row.lastAccess}
                   </td>
-                  <td className="border-r border-collapse border-gray-400">
+                  <td className="px-2 border-r border-collapse border-gray-400">
                     {row.drillAchievement}
                   </td>
-                  <td className="px-2">{row.Purpose}</td>
+                  <td className="px-2 border-r border-collapse border-gray-400">
+                    {row.Purpose}
+                  </td>
                 </tr>
               ))}
             </tbody>

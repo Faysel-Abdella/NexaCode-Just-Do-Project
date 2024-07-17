@@ -63,22 +63,22 @@ const Page24 = () => {
               <CustomSelectOptions
                 label="Language"
                 options={["Korean", "Arabic"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[150px]"
               />
               <CustomSelectOptions
                 label="Type"
                 options={["Speaking", "Voca"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[120px]"
               />
               <CustomSelectOptions
                 label="Status"
                 options={["정상", "정지"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[120px]"
               />
               <CustomSelectOptions
                 label="Category"
                 options={["Life", "School"]}
-                outerStyles="w-[100px]"
+                outerStyles="w-[120px]"
               />
               <CustomSelectOptions
                 label="Connected Country"
@@ -173,7 +173,9 @@ const Page24 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.idOrEmail}
                   </td>
-                  <td className="px-2">{row.connectedCountry}</td>
+                  <td className="px-2 border-r border-collapse border-gray-400">
+                    {row.connectedCountry}
+                  </td>
                 </tr>
               ))}
             </tbody>
