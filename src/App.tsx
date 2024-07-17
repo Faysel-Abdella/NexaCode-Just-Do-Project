@@ -11,82 +11,47 @@ import Page29 from "./pages/Page29";
 import Page30 from "./pages/Page30";
 import Page31 from "./pages/Page31";
 import Page32 from "./pages/Page32";
+import Page34 from "./pages/Page34";
+
+const PageHeader = ({ content }: { content: string }) => {
+  return (
+    <div className="flex justify-center items-center py-10 mt-10">
+      <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
+        {content}
+      </h2>
+    </div>
+  );
+};
 
 function App() {
   return (
     <>
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 18 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 18 👇👇👇" />
       <Page18 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 19 & 20 👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 19 and 20 👇👇👇" />
       <Page19And20 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 21 Modals 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 21 Modals 👇👇👇" />
       <Page21 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 22 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 22 👇👇👇" />
       <Page22 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 24 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 24 👇👇👇" />
       <Page24 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 25 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 25 👇👇👇" />
       <Page25 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 26 (Modals) 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 26 (Modals) 👇👇👇" />
       <Page26 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 27 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 27 👇👇👇" />
       <Page27 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 29 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 29 👇👇👇" />
       <Page29 />
-      <div className="flex justify-center items-center py-4 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 30 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 30 👇👇👇" />
       <Page30 />
-      <div className="flex justify-center items-center py-10 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 31 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 31 👇👇👇" />
       <Page31 />
-      <div className="flex justify-center items-center py-10 mb-10">
-        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
-          Page Number 32 👇👇👇
-        </h2>
-      </div>
+      <PageHeader content="Page Number 32 👇👇👇" />
       <Page32 />
+      <PageHeader content="Page Number 34 👇👇👇" />
+      <Page34 />
     </>
   );
 }
