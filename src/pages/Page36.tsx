@@ -6,32 +6,21 @@ import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
 
-import page27Data from "../data/tablesData/page27";
-import CustomModal from "../components/CustomModal";
+import page36Data from "../data/tablesData/page36";
 
-const Page27 = () => {
+const Page36 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [confirmationModalOpen, setConfirmationModalOpen] =
-    useState<boolean>(false);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page27Data.page27Rows.length / itemsPerPage);
+  const totalPages = Math.ceil(page36Data.page36Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page27Data.page27Rows.slice(startIndex, endIndex);
+  const currentData = page36Data.page36Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-  };
-
-  const handleOpenConfirmationModal = () => {
-    setConfirmationModalOpen(true);
-  };
-
-  const handleCloseConfirmationModal = () => {
-    setConfirmationModalOpen(false);
   };
 
   return (
@@ -40,7 +29,7 @@ const Page27 = () => {
         <article className="flex self-end flex-col gap-1">
           <div className="flex gap-2 font-semibold text-[18px] ">
             <h2>검색 된 항목 :</h2>
-            <h2>383</h2>
+            <h2>6</h2>
           </div>
         </article>
 
@@ -66,25 +55,14 @@ const Page27 = () => {
             </div>
             <div className="flex gap-2 items-center justify-end">
               <CustomSelectOptions
-                label="Language"
-                options={["Korean", "Arabic"]}
-                outerStyles="w-[150px]"
-              />
-              <CustomSelectOptions
-                label="Type"
-                options={["Speaking", "Voca"]}
-                outerStyles="w-[120px]"
-              />
-
-              <CustomSelectOptions
-                label="Category"
-                options={["Life", "School"]}
+                label="Status"
+                options={["대기", "진행중", "종료"]}
                 outerStyles="w-[120px]"
               />
 
               <input
-                className="w-[250px] border border-gray-950 py-[2px] px-1 focus:outline-none"
-                placeholder="Title,Code, Name, ID search"
+                className="w-[350px] border border-gray-950 py-[2px] px-1 focus:outline-none"
+                placeholder="Title, Poster search"
               />
             </div>
           </div>
@@ -103,22 +81,12 @@ const Page27 = () => {
                 <th className="text-center py-2 px-5 border-r border-gray-400">
                   <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
                 </th>
-                {page27Data.page27Columns.map((item) => (
+                {page36Data.page36Columns.map((item) => (
                   <th
                     key={item}
                     className={`text-center border-r border-gray-400 px-3`}
                   >
-                    <p
-                      className={`
-                        ${
-                          item === "Connected Country"
-                            ? "w-[130px]"
-                            : "text-nowrap"
-                        }
-                    `}
-                    >
-                      {item} ▼
-                    </p>
+                    <p className={`text-nowrap`}>{item} ▼</p>
                   </th>
                 ))}
               </tr>
@@ -131,42 +99,43 @@ const Page27 = () => {
                     <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
                   </td>
                   <td className=" border-r border-gray-400 ">{row.number}</td>
-                  <td className="text-left  px-4 border-r border-collapse border-gray-400 ">
-                    {row.language}
-                  </td>
-                  <td className="text-left max-w-[300px] min-w-[300px] overflow-hidden text-ellipsis text-nowrap  px-3  border-r border-collapse border-gray-400 ">
+                  <td className=" border-r border-gray-400 ">{row.code}</td>
+                  <td className="text-left max-w-[400px] min-w-[400px] overflow-hidden text-ellipsis text-nowrap  underline underline-offset-2  px-4 border-r border-collapse border-gray-400 ">
                     {row.title}
                   </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.type}
+                  <td className="text-center text-nowrap  px-3  border-r border-collapse border-gray-400 ">
+                    {row.status}
                   </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.category}
+
+                  <td className="border-r border-collapse border-gray-400 px-3">
+                    <table className="w-full">
+                      <tbody>
+                        <tr>
+                          {row.stats.map((stat, index) => (
+                            <td
+                              key={index}
+                              className={`${
+                                index !== row.stats.length - 1
+                                  ? "w-[70px] border-r border-collapse border-gray-400"
+                                  : ""
+                              }`}
+                            >
+                              {stat}
+                            </td>
+                          ))}
+                        </tr>
+                      </tbody>
+                    </table>
                   </td>
 
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.contentsCode}
+                    {row.postingPeriod.start} ~ {row.postingPeriod.end}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.noOfContents}
+                    {row.postDate}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.size}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.creationDate}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.creator}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.idOrEmail}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.adminId}
-                  </td>
-                  <td className="px-2 border-r border-collapse border-gray-400 max-w-[250px] min-w-[250px] overflow-hidden text-ellipsis text-nowrap text-left">
-                    {row.note}
+                    {row.poster}
                   </td>
                 </tr>
               ))}
@@ -174,15 +143,17 @@ const Page27 = () => {
           </table>
         </div>
 
-        <div className="flex items-center gap-9 self-start mt-3">
-          <button
-            className="bg-zinc-200 py-1 px-6 rounded-md font-semibold"
-            onClick={handleOpenConfirmationModal}
-          >
-            완전 삭제
-          </button>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-9 self-start mt-3">
+            <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
+              삭제
+            </button>
+            <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
+              엑셀 다운로드
+            </button>
+          </div>
           <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
-            엑셀 다운로드
+            새 배너 등록
           </button>
         </div>
 
@@ -220,50 +191,8 @@ const Page27 = () => {
           </button>
         </div>
       </main>
-
-      <CustomModal
-        isOpen={confirmationModalOpen}
-        onClose={handleCloseConfirmationModal}
-      >
-        <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
-          <div className=" border-b-2 border-gray-400 ">
-            <div className="flex justify-between items-center px-2">
-              <h3>완전 삭제</h3>
-              <button
-                className="font-semibold text-[16px]"
-                onClick={handleCloseConfirmationModal}
-              >
-                X
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-center items-center">
-            <div className="">
-              <>
-                <p className="text-center mt-3">완전 삭제 시 해당 데이터가</p>
-                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
-                <p className="text-center mt-6">삭제 하시겠습니까?</p>
-                <div className="flex justify-center items-center gap-3 mt-3">
-                  <button
-                    className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"
-                    onClick={handleCloseConfirmationModal}
-                  >
-                    취소
-                  </button>
-                  <button
-                    className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
-                    onClick={handleCloseConfirmationModal}
-                  >
-                    ID 삭제
-                  </button>
-                </div>
-              </>
-            </div>
-          </div>
-        </section>
-      </CustomModal>
     </section>
   );
 };
 
-export default Page27;
+export default Page36;

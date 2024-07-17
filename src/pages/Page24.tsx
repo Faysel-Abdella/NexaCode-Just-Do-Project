@@ -59,7 +59,7 @@ const Page24 = () => {
                 <img src={calender} alt="Calender Icon" className="size-8" />
               </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center justify-end">
               <CustomSelectOptions
                 label="Language"
                 options={["Korean", "Arabic"]}
@@ -140,7 +140,7 @@ const Page24 = () => {
                   <td className="text-left  px-4 border-r border-collapse border-gray-400 ">
                     {row.language}
                   </td>
-                  <td className="text-left text-nowrap  px-3  border-r border-collapse border-gray-400 ">
+                  <td className="text-left max-w-[300px] min-w-[300px] overflow-hidden text-ellipsis text-nowrap  px-3  border-r border-collapse border-gray-400 ">
                     {row.title}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
@@ -183,10 +183,10 @@ const Page24 = () => {
         </div>
 
         <div className="flex items-center gap-9 self-start mt-3">
-          <button className="bg-zinc-200 py-1 px-2 rounded-md font-semibold">
+          <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
             선택 설정
           </button>
-          <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
+          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
             엑셀 다운로드
           </button>
         </div>

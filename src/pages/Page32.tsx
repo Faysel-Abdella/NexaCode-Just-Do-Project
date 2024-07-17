@@ -64,7 +64,7 @@ const Page32 = () => {
                 <img src={calender} alt="Calender Icon" className="size-8" />
               </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center justify-end">
               <CustomSelectOptions
                 label="Language"
                 options={["Korean", "Arabic"]}
@@ -162,7 +162,7 @@ const Page32 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.adminId}
                   </td>
-                  <td className="px-2 min-w-[250px] text-left border-r border-collapse border-gray-400">
+                  <td className="px-2 max-w-[250px] min-w-[250px] overflow-hidden text-ellipsis text-nowrap text-left border-r border-collapse border-gray-400">
                     {row.note}
                   </td>
                 </tr>
@@ -173,12 +173,12 @@ const Page32 = () => {
 
         <div className="flex items-center gap-9 self-start mt-3">
           <button
-            className="bg-zinc-200 py-1 px-2 rounded-md font-semibold"
+            className="bg-zinc-200 py-1 px-6 rounded-md font-semibold"
             onClick={handleOpenConfirmationModal}
           >
             완전 삭제
           </button>
-          <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
+          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
             엑셀 다운로드
           </button>
         </div>

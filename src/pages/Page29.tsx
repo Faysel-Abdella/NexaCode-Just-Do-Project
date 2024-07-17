@@ -61,7 +61,7 @@ const Page29 = () => {
                 <img src={calender} alt="Calender Icon" className="size-8" />
               </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center justify-end">
               <CustomSelectOptions
                 label="Language"
                 options={["Korean", "Arabic"]}
@@ -172,10 +172,10 @@ const Page29 = () => {
         </div>
 
         <div className="flex items-center gap-9 self-start mt-3">
-          <button className="bg-zinc-200 py-1 px-2 rounded-md font-semibold">
+          <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
             완전 삭제
           </button>
-          <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
+          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
             엑셀 다운로드
           </button>
         </div>
