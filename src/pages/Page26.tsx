@@ -127,27 +127,27 @@ const Page26 = () => {
                     onClick={() => setSelectedIdType("normal")}
                     defaultChecked
                   />
-                  <p>정상 ID</p>
+                  <label htmlFor="radio1">정상 ID</label>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
                     name="radio"
-                    id="radio1"
+                    id="radio2"
                     className="size-4"
                     onClick={() => setSelectedIdType("stop")}
                   />
-                  <p>ID 정지</p>
+                  <label htmlFor="radio2">ID 정지</label>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
                     name="radio"
-                    id="radio1"
+                    id="radio3"
                     className="size-4"
                     onClick={() => setSelectedIdType("delete")}
                   />
-                  <p>ID 삭제</p>
+                  <label htmlFor="radio3">ID 삭제</label>
                 </div>
               </div>
             </div>

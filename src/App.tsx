@@ -8,6 +8,7 @@ import Page25 from "./pages/Page25";
 import Page26 from "./pages/Page26";
 import Page27 from "./pages/Page27";
 import Page29 from "./pages/Page29";
+import Page30 from "./pages/Page30";
 
 function App() {
   return (
@@ -66,6 +67,12 @@ function App() {
         </h2>
       </div>
       <Page29 />
+      <div className="flex justify-center items-center py-4 mb-10">
+        <h2 className="font-bold text-4xl border border-gray-950 w-[600px]  py-2">
+          Page Number 30 👇👇👇
+        </h2>
+      </div>
+      <Page30 />
     </>
   );
 }
