@@ -282,7 +282,7 @@ const Page19 = () => {
             {/* Connected IDs : 14 */}
             <div className="flex flex-col items-start border-b-[3px] border-gray-600 pb-7">
               <h2 className="font-semibold text-[20px] pb-5 pt-10">
-                Connected IDs : 14Connected IDs : 14
+                Connected IDs : 14
               </h2>
               <div className="ml-44 mt-2">
                 <table className="">

@@ -154,7 +154,7 @@ const Page26 = () => {
 
             {selectedModal === "multiple" && (
               <div className="flex items-center gap-28 pt-5">
-                <h3 className="font-semibold text-[16px]">설정</h3>
+                <h3 className="font-semibold text-[16px]">Status</h3>
                 <CustomSelectOptions
                   options={["Life", "School"]}
                   label="LIFE"

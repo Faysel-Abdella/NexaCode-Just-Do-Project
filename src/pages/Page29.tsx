@@ -6,32 +6,21 @@ import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
 
-import page27Data from "../data/tablesData/page27";
-import CustomModal from "../components/CustomModal";
+import page29Data from "../data/tablesData/page29";
 
-const Page27 = () => {
+const Page29 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [confirmationModalOpen, setConfirmationModalOpen] =
-    useState<boolean>(false);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page27Data.page27Rows.length / itemsPerPage);
+  const totalPages = Math.ceil(page29Data.page29Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page27Data.page27Rows.slice(startIndex, endIndex);
+  const currentData = page29Data.page29Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-  };
-
-  const handleOpenConfirmationModal = () => {
-    setConfirmationModalOpen(true);
-  };
-
-  const handleCloseConfirmationModal = () => {
-    setConfirmationModalOpen(false);
   };
 
   return (
@@ -103,7 +92,7 @@ const Page27 = () => {
                 <th className="text-center py-2 px-5 border-r border-gray-400">
                   <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
                 </th>
-                {page27Data.page27Columns.map((item) => (
+                {page29Data.page29Columns.map((item) => (
                   <th
                     key={item}
                     className={`text-center border-r border-gray-400 px-3`}
@@ -111,7 +100,7 @@ const Page27 = () => {
                     <p
                       className={`
                         ${
-                          item === "Connected Country"
+                          item === "Speaking Contents"
                             ? "w-[130px]"
                             : "text-nowrap"
                         }
@@ -135,23 +124,29 @@ const Page27 = () => {
                     {row.language}
                   </td>
                   <td className="text-left text-nowrap  px-3  border-r border-collapse border-gray-400 ">
-                    {row.title}
+                    {row.groupName}
+                  </td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    {row.noOfClass}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.type}
                   </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.category}
-                  </td>
 
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.contentsCode}
+                    {row.status}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.noOfContents}
+                    {row.groupCode}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.size}
+                    {row.noOfMembers}
+                  </td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    {row.speakingContents}
+                  </td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    {row.vocaContents}
                   </td>
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.creationDate}
@@ -159,13 +154,7 @@ const Page27 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.creator}
                   </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.idOrEmail}
-                  </td>
-                  <td className="px-3 border-r border-collapse border-gray-400">
-                    {row.adminId}
-                  </td>
-                  <td className="px-2">{row.note}</td>
+                  <td className="px-2">{row.idOrEmail}</td>
                 </tr>
               ))}
             </tbody>
@@ -173,10 +162,7 @@ const Page27 = () => {
         </div>
 
         <div className="flex items-center gap-9 self-start mt-3">
-          <button
-            className="bg-zinc-200 py-1 px-2 rounded-md font-semibold"
-            onClick={handleOpenConfirmationModal}
-          >
+          <button className="bg-zinc-200 py-1 px-2 rounded-md font-semibold">
             완전 삭제
           </button>
           <button className="bg-gray-500 py-1 px-2 rounded-md font-semibold text-white">
@@ -218,50 +204,8 @@ const Page27 = () => {
           </button>
         </div>
       </main>
-
-      <CustomModal
-        isOpen={confirmationModalOpen}
-        onClose={handleCloseConfirmationModal}
-      >
-        <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
-          <div className=" border-b-2 border-gray-400 ">
-            <div className="flex justify-between items-center px-2">
-              <h3>완전 삭제</h3>
-              <button
-                className="font-semibold text-[16px]"
-                onClick={handleCloseConfirmationModal}
-              >
-                X
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-center items-center">
-            <div className="">
-              <>
-                <p className="text-center mt-3">완전 삭제 시 해당 데이터가</p>
-                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
-                <p className="text-center mt-6">삭제 하시겠습니까?</p>
-                <div className="flex justify-center items-center gap-3 mt-3">
-                  <button
-                    className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"
-                    onClick={handleCloseConfirmationModal}
-                  >
-                    취소
-                  </button>
-                  <button
-                    className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
-                    onClick={handleCloseConfirmationModal}
-                  >
-                    ID 삭제
-                  </button>
-                </div>
-              </>
-            </div>
-          </div>
-        </section>
-      </CustomModal>
     </section>
   );
 };
 
-export default Page27;
+export default Page29;
