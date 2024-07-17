@@ -67,7 +67,7 @@ const Page34 = () => {
               <th className="py-3 border-2 border-gray-800 border-collapse">
                 <div className="flex items-center justify-center">
                   <p>카테고리 이름</p>
-                  <p>※ max 20bytes</p>
+                  <p className="ml-20">※ max 20bytes</p>
                 </div>
               </th>
               <th className="py-3 border-2 border-gray-800 border-collapse text-center">
