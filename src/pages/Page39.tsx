@@ -44,7 +44,7 @@ const Page39 = () => {
     <section>
       <main className="w-[100%] mx-auto border border-gray-600 py-8 shadow-md shadow-gray-400 ">
         <div className="mx-7 px-2 pb-2 border-b-2 border-gray-600 flex items-center justify-between">
-          <p className="font-semibold text-[16px]">배너 상세 정보</p>
+          <p className="font-semibold text-[16px]">새 배너 등록</p>
           <button className="font-semibold text-[16px]">✕</button>
         </div>
         <div className="flex justify-center mt-14">

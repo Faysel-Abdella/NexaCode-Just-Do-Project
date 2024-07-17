@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CustomModal from "../components/CustomModal";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 
@@ -8,7 +9,10 @@ import prevArrow from "../assets/prevArrow.svg";
 
 import page36Data from "../data/tablesData/page36";
 
-const Page36 = () => {
+const Page40 = () => {
+  const [confirmationModalOpen, setConfirmationModalOpen] =
+    useState<boolean>(false);
+
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const itemsPerPage = 10;
@@ -21,6 +25,14 @@ const Page36 = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleOpenConfirmationModal = () => {
+    setConfirmationModalOpen(true);
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setConfirmationModalOpen(false);
   };
 
   return (
@@ -89,6 +101,9 @@ const Page36 = () => {
                     <p className={`text-nowrap`}>{item} ▼</p>
                   </th>
                 ))}
+                <th className={`text-center border-r border-gray-400 px-3`}>
+                  <p className={`text-nowrap`}>Admin ID who deleted ▼</p>
+                </th>
               </tr>
             </thead>
 
@@ -116,7 +131,7 @@ const Page36 = () => {
                               key={index}
                               className={`${
                                 index !== row.stats.length - 1
-                                  ? "min-w-[50px] border-r border-collapse border-gray-400"
+                                  ? " min-w-[50px] border-r border-collapse border-gray-400"
                                   : "min-w-[50px]"
                               }`}
                             >
@@ -137,6 +152,9 @@ const Page36 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     {row.poster}
                   </td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    Admin@gmail.com
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -145,7 +163,10 @@ const Page36 = () => {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-9 self-start mt-3">
-            <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
+            <button
+              className="bg-zinc-200 py-1 px-6 rounded-md font-semibold"
+              onClick={handleOpenConfirmationModal}
+            >
               삭제
             </button>
             <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
@@ -191,8 +212,51 @@ const Page36 = () => {
           </button>
         </div>
       </main>
+
+      <CustomModal
+        isOpen={confirmationModalOpen}
+        onClose={handleCloseConfirmationModal}
+      >
+        <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
+          <div className=" border-b-2 border-gray-400 ">
+            <div className="flex justify-between items-center px-2">
+              <h3>삭제</h3>
+              <button
+                className="font-semibold text-[16px]"
+                onClick={handleCloseConfirmationModal}
+              >
+                X
+              </button>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="">
+              <>
+                <p className="text-center mt-3">삭제 시 해당 데이터가</p>
+                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
+
+                <p className="text-center mt-3">삭제 하시겠습니까?</p>
+                <div className="flex justify-center items-center gap-3 mt-3">
+                  <button
+                    className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    취소
+                  </button>
+                  <button
+                    className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    삭제
+                  </button>
+                </div>
+              </>
+            </div>
+          </div>
+        </section>
+      </CustomModal>
     </section>
   );
 };
 
-export default Page36;
+export default Page40;
