@@ -6,7 +6,6 @@ import CustomModal from "../components/CustomModal";
 import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
-
 import page54Data from "../data/tablesData/page54";
 
 const Page54 = () => {
