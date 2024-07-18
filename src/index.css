@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.nowrap-cell {
-  max-width: 150px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.ck-editor__editable {
+  min-height: 500px;
 }
