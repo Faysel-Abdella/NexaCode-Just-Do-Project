@@ -6,7 +6,6 @@ import CustomModal from "../components/CustomModal";
 import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
-import imageIcon from "../assets/imageIcon.png";
 
 import page54Data from "../data/tablesData/page54";
 
