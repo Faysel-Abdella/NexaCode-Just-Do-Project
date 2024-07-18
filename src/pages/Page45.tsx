@@ -5,17 +5,8 @@ import CustomSelectOptions from "../components/CustomSelectOptions";
 import Editor from "../components/CKEditor ";
 
 const Page45 = () => {
-  const [showProfile, setShowProfile] = useState<boolean>(false);
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
-
-  const showProfileHandler = () => {
-    setShowProfile(true);
-  };
-
-  const hideProfileHandler = () => {
-    setShowProfile(false);
-  };
 
   const handleOpenConfirmationModal = () => {
     setConfirmationModalOpen(true);
@@ -144,20 +135,6 @@ const Page45 = () => {
               </>
             </div>
           </div>
-        </section>
-      </CustomModal>
-
-      {/* Modal for displaying image */}
-      <CustomModal isOpen={showProfile} onClose={hideProfileHandler}>
-        <section className="relative w-[600px] h-[500px] flex items-center justify-center  py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
-          <div className="flex items-center justify-center ">IMAGE</div>
-
-          <button
-            className="absolute top-4 right-4"
-            onClick={hideProfileHandler}
-          >
-            X
-          </button>
         </section>
       </CustomModal>
     </section>
