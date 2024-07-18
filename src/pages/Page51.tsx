@@ -1,10 +1,7 @@
 import { useState } from "react";
 import CustomModal from "../components/CustomModal";
-import CustomSelectOptions from "../components/CustomSelectOptions";
 
-import Editor from "../components/CKEditor ";
-
-const Page45 = () => {
+const Page51 = () => {
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
 
@@ -30,56 +27,77 @@ const Page45 = () => {
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
               <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                Type of Terms
+              </h3>
+              <p className="py-2 px-3">서비스 이용약관 (필수동의)</p>
+            </div>
+            <div className="flex border-b border-gray-500 border-collapse">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Title
               </h3>
-              <div className="py-2 px-3">
+
+              <div className="py-2 px-3 w-full">
                 <input
-                  className="px-2 py-1 min-w-[700px] border border-gray-600"
-                  defaultValue="2023-05 프로모션 이벤트 당첨자 발표"
+                  className="w-full px-2 py-1  border-2 border-gray-600"
+                  defaultValue="2023-06-05 서비스 이용약관 ver.1.17"
                 />
               </div>
             </div>
-            <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
-                Post date
-              </h3>
-              <p className="py-2 px-3">2023-06-05 13:24</p>
+            <div className="flex items-center justify-between border-b border-gray-500 border-collapse">
+              <div className="flex">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                  Post date
+                </h3>
+                <p className="py-2 px-3">2023-06-01 13:24</p>
+              </div>
+              <div className="flex mr-16">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                  Poster
+                </h3>
+                <a className="py-2 px-3 text-blue-600  underline underline-offset-2">
+                  Admin@gmail.com
+                </a>
+              </div>
             </div>
-            <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
-                Poster
-              </h3>
-              <a className="py-2 px-3 text-blue-600  underline underline-offset-2">
-                Admin@gmail.com
-              </a>
-            </div>
-            <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
-                Category
-              </h3>
-              <div className="py-2 px-3">
-                <CustomSelectOptions
-                  label="이벤트"
-                  options={["일반", "시스템", "이벤트", "광고", "구매"]}
-                  outerStyles="min-w-[200px]"
-                />
+            <div className="flex items-center justify-between border-b border-gray-500 border-collapse">
+              <div className="flex">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                  Modified date
+                </h3>
+                <p className="py-2 px-3">2023-06-01 13:24</p>
+              </div>
+              <div className="flex mr-16">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                  Modifier
+                </h3>
+                <a className="py-2 px-3 text-blue-600  underline underline-offset-2">
+                  Admin@gmail.com
+                </a>
               </div>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
               <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 내용
               </h3>
-              <div className="py-2 px-3 text-left">
-                <article className="  min-w-[750px] ">
-                  <Editor initialData={""} />
-                </article>
+              <div className="w-full py-2 px-3 text-left">
+                <textarea
+                  minLength={3}
+                  className="w-full min-h-[500px] px-4 py-3 border-2 border-gray-600"
+                  defaultValue={`이 약관은 SK커뮤니케이션즈 주식회사(이하 "회사"라 합니다)가 제공하는 위치기반서비스(이하 "서비스"라 합니다)와 관련하여, 회사와 이용고객(또는 회원)간에 서비스의 이용조건 및 절차, 회사와 회원간의 권리·의무 및 기타 필요한 사항을 규정함을 목적으로합니다`}
+                />
               </div>
             </div>
-            <div className="flex relative">
-              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500 cursor-pointer">
-                File
+
+            <div className="flex">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                Note
               </h3>
-              <div className="py-2 px-3 flex flex-col items-center gap-2"></div>
+              <div className="py-2 px-3 w-full">
+                <input
+                  className="w-full px-2 py-1 border-2 border-gray-600"
+                  defaultValue=""
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -115,8 +133,9 @@ const Page45 = () => {
           <div className="flex justify-center items-center">
             <div className="">
               <>
-                <p className="text-center mt-3">공지사항 작성을</p>
-                <p className="text-center mt-3">취소 하시겠습니까?</p>
+                <p className="text-center mt-3">삭제 시 해당 내용이</p>
+                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
+                <p className="text-center mt-3">삭제 하시겠습니까?</p>
 
                 <div className="flex justify-center items-center gap-3 mt-3">
                   <button
@@ -141,4 +160,4 @@ const Page45 = () => {
   );
 };
 
-export default Page45;
+export default Page51;

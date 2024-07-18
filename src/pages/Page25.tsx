@@ -17,67 +17,67 @@ const Page25 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">기본 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Language
               </h3>
               <p className="py-2 px-3">영어</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Title
               </h3>
               <p className="py-2 px-3">IELTS TEST FOR BEGINNERS</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Type
               </h3>
               <p className="py-2 px-3">SPEAKING / VOCA</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Contents code
               </h3>
               <p className="py-2 px-3">EN-SPK-03</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 No. of Contents
               </h3>
               <p className="py-2 px-3">23 문장 / 단어</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Size
               </h3>
               <p className="py-2 px-3">5.3 MB</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Downloads
               </h3>
               <p className="py-2 px-3">2587</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Creation Date
               </h3>
               <p className="py-2 px-3">2022. 11. 15</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Creator
               </h3>
               <p className="py-2 px-3">이길동</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 ID
               </h3>
               <p className="py-2 px-3">abcd@email.com</p>
             </div>
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Connected Country
               </h3>
               <p className="py-2 px-3">영국</p>
@@ -110,26 +110,26 @@ const Page25 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">상태 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Status
               </h3>
               <p className="py-2 px-3">신고</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Category
               </h3>
               <p className="py-2 px-3">LIFE</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 신고 내용
               </h3>
               <p className="py-2 px-3"></p>
             </div>
 
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 메모
               </h3>
               <p className="py-2 px-3"></p>

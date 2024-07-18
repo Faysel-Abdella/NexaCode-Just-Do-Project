@@ -32,13 +32,13 @@ const Page44 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">기본 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 No.
               </h3>
               <p className="py-2 px-3">6</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Title
               </h3>
               <div className="py-2 px-3">
@@ -49,13 +49,13 @@ const Page44 = () => {
               </div>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Post date
               </h3>
               <p className="py-2 px-3">2023-06-05 13:24</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Poster
               </h3>
               <a className="py-2 px-3 text-blue-600  underline underline-offset-2">
@@ -63,7 +63,7 @@ const Page44 = () => {
               </a>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Category
               </h3>
               <div className="py-2 px-3">
@@ -75,7 +75,7 @@ const Page44 = () => {
               </div>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 내용
               </h3>
               <div className="py-2 px-3 text-left">
@@ -92,7 +92,7 @@ const Page44 = () => {
               </div>
             </div>
             <div className="flex relative">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500 cursor-pointer">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500 cursor-pointer">
                 File
               </h3>
               <div className="py-2 px-3 flex flex-col items-center gap-2">

@@ -26,25 +26,25 @@ const Page19 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">기본 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 User Name
               </h3>
               <p className="py-2 px-3">Steve White</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 ID(email)
               </h3>
               <p className="py-2 px-3">abcd@email.com</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Sign up date
               </h3>
               <p className="py-2 px-3">2022. 12. 22</p>
             </div>
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500 ">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500 ">
                 Paid Member
               </h3>
               <p className="py-2 px-3">No / Yes 2023-05-13 14:32</p>
@@ -61,19 +61,19 @@ const Page19 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">학습 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Purpose
               </h3>
               <p className="py-2 px-3">For enjoy traveling</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Last Access
               </h3>
               <p className="py-2 px-3">2022. 12. 22 21:06</p>
             </div>
             <div className="flex  ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Language
               </h3>
               <div className="px-3 py-4">
@@ -134,13 +134,13 @@ const Page19 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">상태 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Status
               </h3>
               <p className="py-2 px-3">정상 / 정지 / 신고</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 메모
               </h3>
               <p className="py-2 px-3">
@@ -148,7 +148,7 @@ const Page19 = () => {
               </p>
             </div>
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 신고 내용
               </h3>
               <p className="py-2 px-3"></p>

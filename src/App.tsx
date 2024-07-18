@@ -25,6 +25,8 @@ import Page46 from "./pages/Page46";
 import Page48 from "./pages/Page48";
 import Page49 from "./pages/Page49";
 import Page50 from "./pages/Page50";
+import Page51 from "./pages/Page51";
+import Page54 from "./pages/Page54";
 
 const PageHeader = ({ content }: { content: string }) => {
   return (
@@ -91,6 +93,10 @@ function App() {
       <Page49 />
       <PageHeader content="Page Number 50 👇👇👇" />
       <Page50 />
+      <PageHeader content="Page Number 51 & 52 👇👇👇" />
+      <Page51 />
+      <PageHeader content="Page Number 54 👇👇👇" />
+      <Page54 />
     </>
   );
 }

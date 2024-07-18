@@ -20,32 +20,32 @@ const Page50 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">기본 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 No.
               </h3>
               <p className="py-2 px-3">6</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Type of Terms
               </h3>
               <p className="py-2 px-3">서비스 이용약관 (필수동의)</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Title
               </h3>
               <p className="py-2 px-3">2023-06-05 서비스 이용약관 ver.1.17</p>
             </div>
             <div className="flex items-center justify-between border-b border-gray-500 border-collapse">
               <div className="flex">
-                <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                   Post date
                 </h3>
                 <p className="py-2 px-3">2023-06-01 13:24</p>
               </div>
               <div className="flex mr-16">
-                <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                   Poster
                 </h3>
                 <a className="py-2 px-3 text-blue-600  underline underline-offset-2">
@@ -55,13 +55,13 @@ const Page50 = () => {
             </div>
             <div className="flex items-center justify-between border-b border-gray-500 border-collapse">
               <div className="flex">
-                <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                   Modified date
                 </h3>
                 <p className="py-2 px-3">2023-06-01 13:24</p>
               </div>
               <div className="flex mr-16">
-                <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                   Modifier
                 </h3>
                 <a className="py-2 px-3 text-blue-600  underline underline-offset-2">
@@ -134,7 +134,7 @@ const Page50 = () => {
             </div>
 
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Note
               </h3>
               <p className="py-2 px-3">관련법 개정으로 인한 변경</p>

@@ -50,7 +50,7 @@ const Page38 = () => {
         <div className="flex justify-center mt-14">
           <div className="w-[90%] border border-gray-500 border-collapse">
             <div className="flex  border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 제목
               </h3>
               <div className="py-1 px-3 text-slate-800">
@@ -62,13 +62,13 @@ const Page38 = () => {
               </div>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Code
               </h3>
               <p className="py-2 px-3 text-slate-800">MB-6</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 게시 기간
               </h3>
               <div className="flex items-center gap-5 py-2 px-3 text-slate-800">
@@ -98,7 +98,7 @@ const Page38 = () => {
               </div>
             </div>
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 상태
               </h3>
               <div className="py-2 px-3 flex items-center gap-5">
@@ -144,7 +144,7 @@ const Page38 = () => {
         <div className="flex justify-center mt-14">
           <div className="w-[90%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <div className="flex items-center py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <div className="flex items-center py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 <h3>이미지</h3>
               </div>
               <div className="py-4 px-3 overflow-x-auto flex flex-col justify-center">
@@ -237,7 +237,7 @@ const Page38 = () => {
             </div>
 
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 이미지 전환
               </h3>
               <div className="py-2 px-3 flex items-center gap-5">

@@ -17,67 +17,67 @@ const Page30 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">기본 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Language
               </h3>
               <p className="py-2 px-3">영어</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Group Name
               </h3>
               <p className="py-2 px-3">IELTS TEST FOR BEGINNERS</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 No. of Class
               </h3>
               <p className="py-2 px-3">5</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Type
               </h3>
               <p className="py-2 px-3">SPEAKING</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Group code
               </h3>
               <p className="py-2 px-3">EN-GR-P-01</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 No. of Members
               </h3>
               <p className="py-2 px-3">229 명</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Speaking Contents
               </h3>
               <p className="py-2 px-3">47</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 VOCA
               </h3>
               <p className="py-2 px-3">85</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Creation Date
               </h3>
               <p className="py-2 px-3">2022. 12. 22</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Creator
               </h3>
               <p className="py-2 px-3">Henry Hong</p>
             </div>
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 ID
               </h3>
               <p className="py-2 px-3 underline underline-offset-2">
@@ -112,7 +112,7 @@ const Page30 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">상태 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Status
               </h3>
               <div className="flex items-center gap-6 py-2 px-3 ">
@@ -147,7 +147,7 @@ const Page30 = () => {
             </div>
             <div className="flex justify-between border-b border-gray-500 border-collapse">
               <div className="flex">
-                <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+                <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                   Password
                 </h3>
                 <p className="py-2 px-3">1234</p>
@@ -165,7 +165,7 @@ const Page30 = () => {
             </div>
 
             <div className="flex items-center">
-              <h3 className="py-3 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-3 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 메모
               </h3>
               <div className="px-3">
@@ -182,31 +182,31 @@ const Page30 = () => {
           <h2 className="font-semibold text-[24px] text-gray-500">상태 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Class 01
               </h3>
               <p className="py-2 px-3">Class Name</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Class 02
               </h3>
               <p className="py-2 px-3">Class Name</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Class 03
               </h3>
               <p className="py-2 px-3">Class Name</p>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Class 04
               </h3>
               <p className="py-2 px-3">Class Name</p>
             </div>
             <div className="flex ">
-              <h3 className="py-2 px-3 w-[200px] text-left bg-zinc-200 border-r border-gray-500">
+              <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Class 05
               </h3>
               <p className="py-2 px-3">Class Name</p>
