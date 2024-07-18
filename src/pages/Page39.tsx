@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
 
