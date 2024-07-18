@@ -242,45 +242,45 @@ const Page39 = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="updateTransition"
-                    id="updateTransition1"
+                    name="addTransition"
+                    id="addTransition1"
                     className="size-4"
                     defaultChecked
                   />
-                  <label htmlFor="updateTransition1" className="text-slate-800">
+                  <label htmlFor="addTransition1" className="text-slate-800">
                     가로1 - from the Right
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="updateTransition"
-                    id="updateTransition2"
+                    name="addTransition"
+                    id="addTransition2"
                     className="size-4"
                   />
-                  <label htmlFor="updateTransition2" className="text-slate-800">
+                  <label htmlFor="addTransition2" className="text-slate-800">
                     가로2 - from the Left
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="updateTransition"
-                    id="updateTransition3"
+                    name="addTransition"
+                    id="addTransition3"
                     className="size-4"
                   />
-                  <label htmlFor="updateTransition3" className="text-slate-800">
+                  <label htmlFor="addTransition3" className="text-slate-800">
                     세로1 - from the Bottom
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="transition"
-                    id="transition4"
+                    name="addTransition"
+                    id="addTransition4"
                     className="size-4"
                   />
-                  <label htmlFor="transition4" className="text-slate-800">
+                  <label htmlFor="addTransition4" className="text-slate-800">
                     세로2 - from the Top
                   </label>
                 </div>

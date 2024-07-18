@@ -279,10 +279,10 @@ const Page38 = () => {
                   <input
                     type="radio"
                     name="transition"
-                    id="transition4"
+                    id="updateTransition4"
                     className="size-4"
                   />
-                  <label htmlFor="transition4" className="text-slate-800">
+                  <label htmlFor="updateTransition4" className="text-slate-800">
                     세로2 - from the Top
                   </label>
                 </div>
