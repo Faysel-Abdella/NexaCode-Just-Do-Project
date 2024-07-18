@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
+import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
 import forwardArrow from "../assets/forwardArrow.svg";
@@ -10,6 +11,9 @@ import imageIcon from "../assets/imageIcon.png";
 import page42Data from "../data/tablesData/page42";
 
 const Page42 = () => {
+  const [confirmationModalOpen, setConfirmationModalOpen] =
+    useState<boolean>(false);
+
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const itemsPerPage = 10;
@@ -22,6 +26,14 @@ const Page42 = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleOpenConfirmationModal = () => {
+    setConfirmationModalOpen(true);
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setConfirmationModalOpen(false);
   };
   return (
     <section>
@@ -89,6 +101,9 @@ const Page42 = () => {
                     <p className={`text-nowrap`}>{item} ▼</p>
                   </th>
                 ))}
+                <th className={`text-center border-r border-gray-400 px-3`}>
+                  <p className={`text-nowrap`}>Admin ID who deleted ▼</p>
+                </th>
               </tr>
             </thead>
 
@@ -122,6 +137,11 @@ const Page42 = () => {
                   <td className="px-3 border-r border-collapse border-gray-400">
                     <a className="underline underline-offset-1">{row.poster}</a>
                   </td>
+                  <td className="px-3 border-r border-collapse border-gray-400">
+                    <a className="underline underline-offset-1">
+                      Admin@email.com
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -130,16 +150,16 @@ const Page42 = () => {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-9 self-start mt-3">
-            <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
-              삭제
+            <button
+              className="bg-zinc-200 py-1 px-6 rounded-md font-semibold"
+              onClick={handleOpenConfirmationModal}
+            >
+              완전 삭제
             </button>
             <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
               엑셀 다운로드
             </button>
           </div>
-          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
-            새 배너 등록
-          </button>
         </div>
 
         <div className=" flex items-center justify-center mb-6 h-[60px]">
@@ -176,6 +196,49 @@ const Page42 = () => {
           </button>
         </div>
       </main>
+
+      <CustomModal
+        isOpen={confirmationModalOpen}
+        onClose={handleCloseConfirmationModal}
+      >
+        <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
+          <div className=" border-b-2 border-gray-400 ">
+            <div className="flex justify-between items-center px-2">
+              <h3>삭제</h3>
+              <button
+                className="font-semibold text-[16px]"
+                onClick={handleCloseConfirmationModal}
+              >
+                X
+              </button>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="">
+              <>
+                <p className="text-center mt-3">삭제 시 해당 내용이</p>
+                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
+
+                <p className="text-center mt-3">삭제 하시겠습니까?</p>
+                <div className="flex justify-center items-center gap-3 mt-3">
+                  <button
+                    className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    취소
+                  </button>
+                  <button
+                    className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
+                    onClick={handleCloseConfirmationModal}
+                  >
+                    삭제
+                  </button>
+                </div>
+              </>
+            </div>
+          </div>
+        </section>
+      </CustomModal>
     </section>
   );
 };
