@@ -12,8 +12,11 @@ import page42Data from "../data/tablesData/page42";
 
 const Page42 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
   const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
+  const [allListCheckedPageNumbers, setAllListCheckedPageNumbers] = useState<
+    number[]
+  >([]);
+  const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page42Data.page42Rows.length / itemsPerPage);
@@ -25,6 +28,11 @@ const Page42 = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleSortData = () => {
+    setIsArrayReverse(!isArrayReverse);
+    page42Data.page42Rows.reverse();
   };
   return (
     <section>
@@ -81,25 +89,41 @@ const Page42 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="flex items-center justify-center text-center py-3 px-5 border-r border-gray-400">
+                <th className="py-2 w-[62px] text-center  px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
-                      if (isAllChecked) {
-                        setClickedRowIds([]);
+                      if (allListCheckedPageNumbers.includes(currentPage)) {
+                        setAllListCheckedPageNumbers(
+                          allListCheckedPageNumbers.filter(
+                            (number) => number !== currentPage
+                          )
+                        );
+                        setClickedRowIds(
+                          clickedRowIds.filter(
+                            (id) =>
+                              !currentData
+                                .map((item) => item.number)
+                                .includes(id)
+                          )
+                        );
                       } else {
                         setClickedRowIds([
-                          ...page42Data.page42Rows.map((item) => item.number),
+                          ...clickedRowIds,
+                          ...currentData.map((item) => item.number),
+                        ]);
+                        setAllListCheckedPageNumbers([
+                          ...allListCheckedPageNumbers,
+                          currentPage,
                         ]);
                       }
-                      setIsAllChecked(!isAllChecked);
                     }}
-                    className={`size-5 flex justify-center items-center rounded-sm text-white ${
-                      isAllChecked
+                    className={` w-[18px] h-[18px] flex justify-center items-center rounded-sm text-white ${
+                      allListCheckedPageNumbers.includes(currentPage)
                         ? "bg-blue-500 border-[2px] border-blue-500"
                         : "border-[3px] border-gray-500"
                     }  `}
                   >
-                    {isAllChecked && (
+                    {allListCheckedPageNumbers.includes(currentPage) && (
                       <p className="flex items-center justify-center text-white text-[22px]">
                         ✓
                       </p>
@@ -111,7 +135,18 @@ const Page42 = () => {
                     key={item}
                     className={`text-center border-r border-gray-400 px-3`}
                   >
-                    <p className={`text-nowrap`}>{item} ▼</p>
+                    <button
+                      className={`text-nowrap`}
+                      onClick={() => {
+                        if (item === "No.") {
+                          handleSortData();
+                          setAllListCheckedPageNumbers([]);
+                          setClickedRowIds([]);
+                        }
+                      }}
+                    >
+                      {item} ▼
+                    </button>
                   </th>
                 ))}
               </tr>
@@ -120,7 +155,7 @@ const Page42 = () => {
             <tbody className="border-b-2 border-gray-800 text-nowrap">
               {currentData.map((row) => (
                 <tr key={row.number}>
-                  <td className="py-3 border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
+                  <td className="py-3 w-[62px] border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
                     <button
                       className={`text-center w-[18px] h-[18px] rounded-sm
                          flex justify-center items-center 

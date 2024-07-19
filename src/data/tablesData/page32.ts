@@ -333,4 +333,22 @@ const page32Rows = [
   },
 ];
 
+for (let i = 179; i > 0; i--) {
+  page32Rows.push({
+    number: i,
+    language: "Korean",
+    groupName: "Korean Class",
+    type: "Password",
+    groupCode: "KOR-01",
+    noOfMembers: 10,
+    speakingContents: 20,
+    vocaContents: 30,
+    creationDate: "2021-10-01",
+    creator: "John Doe",
+    idOrEmail: "abcd@email.com",
+    adminId: "Admin@gmail.com",
+    note: "불건전 콘텐츠 공유",
+  });
+}
+
 export default { page32Columns, page32Rows };

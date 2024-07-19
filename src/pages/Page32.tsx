@@ -13,8 +13,11 @@ const Page32 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
-  const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
   const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
+  const [allListCheckedPageNumbers, setAllListCheckedPageNumbers] = useState<
+    number[]
+  >([]);
+  const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page32Data.page32Rows.length / itemsPerPage);
@@ -34,6 +37,11 @@ const Page32 = () => {
 
   const handleCloseConfirmationModal = () => {
     setConfirmationModalOpen(false);
+  };
+
+  const handleSortData = () => {
+    setIsArrayReverse(!isArrayReverse);
+    page32Data.page32Rows.reverse();
   };
 
   return (
@@ -96,25 +104,41 @@ const Page32 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="text-center py-1 px-5 border-r border-gray-400">
+                <th className="w-[62px] text-center py-1 px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
-                      if (isAllChecked) {
-                        setClickedRowIds([]);
+                      if (allListCheckedPageNumbers.includes(currentPage)) {
+                        setAllListCheckedPageNumbers(
+                          allListCheckedPageNumbers.filter(
+                            (number) => number !== currentPage
+                          )
+                        );
+                        setClickedRowIds(
+                          clickedRowIds.filter(
+                            (id) =>
+                              !currentData
+                                .map((item) => item.number)
+                                .includes(id)
+                          )
+                        );
                       } else {
                         setClickedRowIds([
-                          ...page32Data.page32Rows.map((item) => item.number),
+                          ...clickedRowIds,
+                          ...currentData.map((item) => item.number),
+                        ]);
+                        setAllListCheckedPageNumbers([
+                          ...allListCheckedPageNumbers,
+                          currentPage,
                         ]);
                       }
-                      setIsAllChecked(!isAllChecked);
                     }}
-                    className={`size-5 flex justify-center items-center rounded-sm text-white ${
-                      isAllChecked
+                    className={` w-[18px] h-[18px] flex justify-center items-center rounded-sm text-white ${
+                      allListCheckedPageNumbers.includes(currentPage)
                         ? "bg-blue-500 border-[2px] border-blue-500"
                         : "border-[3px] border-gray-500"
                     }  `}
                   >
-                    {isAllChecked && (
+                    {allListCheckedPageNumbers.includes(currentPage) && (
                       <p className="flex items-center justify-center text-white text-[22px]">
                         ✓
                       </p>
@@ -126,7 +150,7 @@ const Page32 = () => {
                     key={item}
                     className={`text-center border-r border-gray-400 px-3`}
                   >
-                    <p
+                    <button
                       className={`
                         ${
                           item === "Speaking Contents"
@@ -137,9 +161,16 @@ const Page32 = () => {
                         }
                         ${item === "No. of Member" ? "w-[100px]" : ""}
                     `}
+                      onClick={() => {
+                        if (item === "No.") {
+                          handleSortData();
+                          setAllListCheckedPageNumbers([]);
+                          setClickedRowIds([]);
+                        }
+                      }}
                     >
                       {item} ▼
-                    </p>
+                    </button>
                   </th>
                 ))}
               </tr>
@@ -148,7 +179,7 @@ const Page32 = () => {
             <tbody className="border-b-2 border-gray-800 text-nowrap">
               {currentData.map((row) => (
                 <tr key={row.number}>
-                  <td className="py-3 border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
+                  <td className="py-3 w-[62px] border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
                     <button
                       className={`text-center w-[18px] h-[18px] rounded-sm
                          flex justify-center items-center 
