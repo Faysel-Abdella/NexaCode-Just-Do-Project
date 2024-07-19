@@ -3,23 +3,28 @@ import { useState } from "react";
 import CustomModal from "../components/CustomModal";
 import CustomSelectOptions from "../components/CustomSelectOptions";
 
-const Page26 = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+const Page26 = ({
+  openTheModal,
+  modalData,
+  handleCloseModal,
+}: {
+  openTheModal: boolean;
+  modalData: {
+    number: number;
+    language: string;
+    title: string;
+    type: string;
+    code: string;
+  }[];
+  handleCloseModal: () => void;
+}) => {
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
-  const [selectedModal, setSelectedModal] = useState<string>("");
+  const [selectedModal, _setSelectedModal] = useState<string>("multiple");
 
   const [selectedIdType, setSelectedIdType] = useState<
     "normal" | "stop" | "delete" | ""
   >("normal");
-
-  const handleOpenModal = () => {
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
 
   const handleOpenConfirmationModal = () => {
     setConfirmationModalOpen(true);
@@ -30,29 +35,8 @@ const Page26 = () => {
   };
   return (
     <section>
-      <div className="flex flex-col items-center gap-3">
-        <button
-          className="bg-slate-400 w-fit py-3 px-4 rounded-lg text-white"
-          onClick={() => {
-            setSelectedModal("multiple");
-            handleOpenModal();
-          }}
-        >
-          [리스트에서 다수 콘텐츠 선택 시]
-        </button>
-        <button
-          className="bg-slate-400 w-fit py-3 px-4 rounded-lg text-white"
-          onClick={() => {
-            setSelectedModal("single");
-            handleOpenModal();
-          }}
-        >
-          [콘텐츠 상세 페이지에서 설정 시]
-        </button>
-      </div>
-
-      <CustomModal isOpen={modalOpen} onClose={handleCloseModal}>
-        <section className="w-[650px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
+      <CustomModal isOpen={openTheModal} onClose={handleCloseModal}>
+        <section className="min-w-[750px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
           <div className=" border-b-2 border-gray-400 ">
             <div className="flex justify-between items-center px-2">
               <h3 className="font-semibold">콘텐츠 설정</h3>
@@ -65,41 +49,29 @@ const Page26 = () => {
             </div>
           </div>
 
-          <h3 className="text-left py-3">선택 4</h3>
-          <div className="border-b-2 border-gray-600 pb-2 overflow-x-auto ">
+          <h3 className="text-left py-3">선택 {modalData.length}</h3>
+          <div className="max-h-[200px]  overflow-auto border-b-2 border-gray-600 pb-2  ">
             {selectedModal === "multiple" && (
               <table className="w-full">
                 <thead>
                   <tr>
-                    <td>No.</td>
-                    <td>Language</td>
-                    <td>Title</td>
-                    <td>Type</td>
-                    <td>Code</td>
+                    <td className="px-3 ">No.</td>
+                    <td className="py-1 px-3 ">Language</td>
+                    <td className="py-1 px-3 ">Title</td>
+                    <td className="py-1 px-3 ">Type</td>
+                    <td className="py-1 px-3 ">Code</td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="py-1">200</td>
-                    <td>영어</td>
-                    <td>Re-start English 01</td>
-                    <td>Speaking</td>
-                    <td>EN-SPK-06</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">200</td>
-                    <td>영어</td>
-                    <td>Re-start English 01</td>
-                    <td>Speaking</td>
-                    <td>EN-SPK-06</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">200</td>
-                    <td>영어</td>
-                    <td>Re-start English 01</td>
-                    <td>Speaking</td>
-                    <td>EN-SPK-06</td>
-                  </tr>
+                  {modalData.map((row) => (
+                    <tr>
+                      <td className="py-1 px-3">{row.number}</td>
+                      <td className="py-1 px-3">{row.language}</td>
+                      <td className="py-1 px-3">{row.title}</td>
+                      <td className="py-1 px-3">{row.type}</td>
+                      <td className="py-1 px-3">{row.code}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             )}

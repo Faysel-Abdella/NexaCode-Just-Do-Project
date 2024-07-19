@@ -2,23 +2,27 @@ import { useState } from "react";
 
 import CustomModal from "../components/CustomModal";
 
-const Page31 = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+const Page31 = ({
+  openTheModal,
+  modalData,
+  handleCloseModal,
+}: {
+  openTheModal: boolean;
+  modalData: {
+    number: number;
+    language: string;
+    groupName: string;
+    type: string;
+    code: string;
+  }[];
+  handleCloseModal: () => void;
+}) => {
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
 
   const [selectedIdType, setSelectedIdType] = useState<
     "normal" | "stop" | "delete" | ""
   >("normal");
-
-  const handleOpenModal = () => {
-    console.log("handleOpenModal");
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
 
   const handleOpenConfirmationModal = () => {
     setConfirmationModalOpen(true);
@@ -29,22 +33,7 @@ const Page31 = () => {
   };
   return (
     <section>
-      <div className="flex flex-col items-center gap-3">
-        <button
-          className="bg-slate-400 w-fit py-3 px-4 rounded-lg text-white"
-          onClick={handleOpenModal}
-        >
-          Click Here to Open Modal
-        </button>
-        <button
-          className="bg-slate-400 w-fit py-3 px-4 rounded-lg text-white"
-          onClick={handleOpenModal}
-        >
-          모달을 열려면 여기를 클릭하세요
-        </button>
-      </div>
-
-      <CustomModal isOpen={modalOpen} onClose={handleCloseModal}>
+      <CustomModal isOpen={openTheModal} onClose={handleCloseModal}>
         <section className="w-[650px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
           <div className=" border-b-2 border-gray-400 ">
             <div className="flex justify-between items-center px-2">
@@ -58,40 +47,29 @@ const Page31 = () => {
             </div>
           </div>
 
-          <h3 className="text-left py-3">선택 4</h3>
-          <div className="border-b-2 border-gray-600 pb-2 overflow-x-auto ">
+          <h3 className="text-left py-3">선택 {modalData.length}</h3>
+          <div className="max-h-[200px] overflow-auto border-b-2 border-gray-600 pb-2 ">
             <table className="w-full">
               <thead>
                 <tr>
-                  <td>No.</td>
-                  <td>Language</td>
-                  <td>Group Name</td>
-                  <td>Type</td>
-                  <td>Code</td>
+                  <td className="py-1 px-3">No.</td>
+                  <td className="py-1 px-3 ">Language</td>
+                  <td className="py-1 px-3 ">Group Name</td>
+                  <td className="py-1 px-3 ">Type</td>
+                  <td className="py-1 px-3 ">Code</td>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
-                  <td className="py-1">200</td>
-                  <td>영어</td>
-                  <td>Re-start English 01</td>
-                  <td>Speaking</td>
-                  <td>EN-SPK-06</td>
-                </tr>
-                <tr>
-                  <td className="py-1">200</td>
-                  <td>영어</td>
-                  <td>Re-start English 01</td>
-                  <td>Speaking</td>
-                  <td>EN-SPK-06</td>
-                </tr>
-                <tr>
-                  <td className="py-1">200</td>
-                  <td>영어</td>
-                  <td>Re-start English 01</td>
-                  <td>Speaking</td>
-                  <td>EN-SPK-06</td>
-                </tr>
+                {modalData.map((row) => (
+                  <tr>
+                    <td className="py-1 px-3">{row.number}</td>
+                    <td className="py-1 px-3">{row.language}</td>
+                    <td className="py-1 px-3">{row.groupName}</td>
+                    <td className="py-1 px-3">{row.type}</td>
+                    <td className="py-1 px-3">{row.code}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

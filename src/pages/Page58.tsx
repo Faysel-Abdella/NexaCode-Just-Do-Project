@@ -1,11 +1,11 @@
 import { useState } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 
 import calender from "../assets/calender.png";
 import page58Data from "../data/tablesData/page58";
-import forwardArrow from "../assets/forwardArrow.svg";
-import prevArrow from "../assets/prevArrow.svg";
 
 const Page18 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -104,7 +104,7 @@ const Page18 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="text-center py-1 px-5 border-r border-gray-400">
+                <th className="text-center py-3 px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
                       if (isAllChecked) {
@@ -250,39 +250,16 @@ const Page18 = () => {
           </div>
         </div>
 
-        <div className=" flex items-center justify-center mb-6 h-[60px]">
-          <button
-            className={`mr-2 p-2 ${
-              currentPage === 1 ? "cursor-not-allowed" : " hover:bg-gray-300"
-            } text-white  rounded-full`}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <img src={prevArrow} alt="something" />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              className={`mr-2 p-0 ${
-                currentPage === page ? "text-black" : "text-gray-400"
-              } mx-2 text-medium font-medium  rounded-full`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            className={`ml-2 p-2 ${
-              currentPage === totalPages
-                ? " cursor-not-allowed"
-                : " hover:bg-gray-300"
-            } text-white rounded-full`}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <img src={forwardArrow} alt="arrow" />
-          </button>
-        </div>
+        <Stack spacing={2} className="flex items-center justify-center">
+          <Pagination
+            count={totalPages}
+            showFirstButton
+            showLastButton
+            onChange={(_event, value) => {
+              handlePageChange(value);
+            }}
+          />
+        </Stack>
       </main>
     </section>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import forwardArrow from "../assets/forwardArrow.svg";
-import prevArrow from "../assets/prevArrow.svg";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+
 import CustomModal from "../components/CustomModal";
 
 const Page37 = () => {
@@ -290,33 +291,9 @@ const Page37 = () => {
       </main>
 
       <div className=" flex items-center justify-center mt-6 h-[60px]">
-        <button
-          className={`mr-2 p-2 hover:bg-gray-300 text-white  rounded-full`}
-        >
-          <img src={prevArrow} alt="prevArrow" />
-        </button>
-
-        <button
-          className={`mr-2 p-0 mx-2 text-medium font-medium  rounded-full text-black`}
-        >
-          1
-        </button>
-        <button
-          className={`mr-2 p-0 mx-2 text-medium font-medium  rounded-full text-gray-400`}
-        >
-          2
-        </button>
-        <button
-          className={`mr-2 p-0 mx-2 text-medium font-medium  rounded-full text-gray-400`}
-        >
-          3
-        </button>
-
-        <button
-          className={`ml-2 p-2 hover:bg-gray-300  text-white rounded-full`}
-        >
-          <img src={forwardArrow} alt="arrow" />
-        </button>
+        <Stack spacing={2} className="flex items-center justify-center">
+          <Pagination count={3} onChange={() => {}} />
+        </Stack>
       </div>
 
       {/* Modal for displaying image */}

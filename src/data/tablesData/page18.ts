@@ -1,4 +1,4 @@
-const columns18 = [
+const page18Columns = [
   "No.",
   "Name",
   "ID(email)",
@@ -11,7 +11,7 @@ const columns18 = [
   "Purpose",
 ];
 
-const rows18: {
+const page18Rows: {
   number: number;
   name: string;
   idOrEmail: string;
@@ -205,7 +205,22 @@ const rows18: {
   },
 ];
 
+for (let i = 185; i > 0; i--) {
+  page18Rows.push({
+    number: i,
+    name: "Steve White",
+    idOrEmail: "abcd@email.com",
+    status: "정상",
+    connectedCountry: "한국",
+    signUpDate: "2021-01-01",
+    paidMember: "2023. 01. 01",
+    lastAccess: "2021-01-01",
+    drillAchievement: "7",
+    Purpose: "For studying",
+  });
+}
+
 export default {
-  columns18,
-  rows18,
+  page18Columns,
+  page18Rows,
 };

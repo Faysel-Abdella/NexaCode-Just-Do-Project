@@ -306,6 +306,25 @@ const page24Rows = [
   },
 ];
 
+for (let i = 182; i > 0; i--) {
+  page24Rows.push({
+    number: i,
+    language: "스페인어",
+    title: "Hablando con fluidez",
+    type: "speaking",
+    status: "정상",
+    category: "LIFE",
+    contentsCode: "ES-SPK-02",
+    noOfContents: "15 문장",
+    size: "400K",
+    downloads: "320",
+    creationDate: "2021-01-01",
+    creator: "Juan Martinez",
+    idOrEmail: "juan@gmail.com",
+    connectedCountry: "스페인",
+  });
+}
+
 export default {
   page24Columns,
   page24Rows,

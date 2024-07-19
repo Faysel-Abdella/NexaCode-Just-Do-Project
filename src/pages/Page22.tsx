@@ -1,18 +1,22 @@
 import { useState } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
-
-import forwardArrow from "../assets/forwardArrow.svg";
-import prevArrow from "../assets/prevArrow.svg";
 import page22Data from "../data/tablesData/page22";
 
 const Page22 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
+  const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
+  const [allListCheckedPageNumbers, setAllListCheckedPageNumbers] = useState<
+    number[]
+  >([]);
+  const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page22Data.page22Rows.length / itemsPerPage);
@@ -32,6 +36,11 @@ const Page22 = () => {
 
   const handleCloseConfirmationModal = () => {
     setConfirmationModalOpen(false);
+  };
+
+  const handleSortData = () => {
+    setIsArrayReverse(!isArrayReverse);
+    page22Data.page22Rows.reverse();
   };
 
   return (
@@ -94,8 +103,46 @@ const Page22 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="text-center py-1 px-5 border-r border-gray-400">
-                  <button className="text-center size-5 border-[3px] border-gray-500 rounded-sm "></button>
+                <th className="w-[62px] text-center py-1 px-5 border-r border-gray-400">
+                  <button
+                    onClick={() => {
+                      if (allListCheckedPageNumbers.includes(currentPage)) {
+                        setAllListCheckedPageNumbers(
+                          allListCheckedPageNumbers.filter(
+                            (number) => number !== currentPage
+                          )
+                        );
+                        setClickedRowIds(
+                          clickedRowIds.filter(
+                            (id) =>
+                              !currentData
+                                .map((item) => item.number)
+                                .includes(id)
+                          )
+                        );
+                      } else {
+                        setClickedRowIds([
+                          ...clickedRowIds,
+                          ...currentData.map((item) => item.number),
+                        ]);
+                        setAllListCheckedPageNumbers([
+                          ...allListCheckedPageNumbers,
+                          currentPage,
+                        ]);
+                      }
+                    }}
+                    className={` w-[18px] h-[18px] flex justify-center items-center rounded-sm text-white ${
+                      allListCheckedPageNumbers.includes(currentPage)
+                        ? "bg-blue-500 border-[2px] border-blue-500"
+                        : "border-[3px] border-gray-500"
+                    }  `}
+                  >
+                    {allListCheckedPageNumbers.includes(currentPage) && (
+                      <p className="flex items-center justify-center text-white text-[22px]">
+                        ✓
+                      </p>
+                    )}
+                  </button>
                 </th>
                 {page22Data.page22Columns.map((item) => (
                   <th
@@ -104,7 +151,7 @@ const Page22 = () => {
                       item == "Purpose" ? "border-r-0" : ""
                     }`}
                   >
-                    <p
+                    <button
                       className={`
                         ${
                           item === "Connected Country" ||
@@ -119,9 +166,16 @@ const Page22 = () => {
                         }
                         ${item === "Connected Country" ? "w-[130px] " : ""}
                         `}
+                      onClick={() => {
+                        if (item === "No.") {
+                          handleSortData();
+                          setAllListCheckedPageNumbers([]);
+                          setClickedRowIds([]);
+                        }
+                      }}
                     >
                       {item} ▼
-                    </p>
+                    </button>
                   </th>
                 ))}
               </tr>
@@ -130,8 +184,30 @@ const Page22 = () => {
             <tbody className="border-b-2 border-gray-800">
               {currentData.map((row) => (
                 <tr key={row.number}>
-                  <td className="py-2 border-r border-collapse border-gray-400  ">
-                    <button className="text-center size-4 border-[2px]  border-gray-800 rounded-sm "></button>
+                  <td className="py-3 w-[62px] border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
+                    <button
+                      className={`text-center w-[18px] h-[18px] rounded-sm
+                         flex justify-center items-center 
+                        ${
+                          clickedRowIds.includes(row.number)
+                            ? "bg-blue-500 border-[2px] border-blue-500"
+                            : "border-[2px]  border-gray-800"
+                        }
+                        `}
+                      onClick={() => {
+                        if (clickedRowIds.includes(row.number)) {
+                          setClickedRowIds(
+                            clickedRowIds.filter((id) => id !== row.number)
+                          );
+                        } else {
+                          setClickedRowIds([...clickedRowIds, row.number]);
+                        }
+                      }}
+                    >
+                      {clickedRowIds.includes(row.number) && (
+                        <p className=" text-center text-white text-[22px]">✓</p>
+                      )}
+                    </button>
                   </td>
                   <td className=" border-r border-gray-400 ">{row.number}</td>
                   <td className="text-left  px-4 border-r border-collapse border-gray-400 ">
@@ -176,39 +252,16 @@ const Page22 = () => {
           </button>
         </div>
 
-        <div className=" flex items-center justify-center mb-6 h-[60px]">
-          <button
-            className={`mr-2 p-2 ${
-              currentPage === 1 ? "cursor-not-allowed" : " hover:bg-gray-300"
-            } text-white  rounded-full`}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <img src={prevArrow} alt="something" />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              className={`mr-2 p-0 ${
-                currentPage === page ? "text-black" : "text-gray-400"
-              } mx-2 text-medium font-medium  rounded-full`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            className={`ml-2 p-2 ${
-              currentPage === totalPages
-                ? " cursor-not-allowed"
-                : " hover:bg-gray-300"
-            } text-white rounded-full`}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <img src={forwardArrow} alt="arrow" />
-          </button>
-        </div>
+        <Stack spacing={2} className="flex items-center justify-center">
+          <Pagination
+            count={totalPages}
+            showFirstButton
+            showLastButton
+            onChange={(_event, value) => {
+              handlePageChange(value);
+            }}
+          />
+        </Stack>
       </main>
 
       <CustomModal

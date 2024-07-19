@@ -333,6 +333,24 @@ const page29Rows = [
   },
 ];
 
+for (let i = 179; i > 0; i--) {
+  page29Rows.push({
+    number: i,
+    language: "Arabic",
+    groupName: "Arabic Class",
+    noOfClass: 5,
+    type: "Speaking",
+    status: "Active",
+    groupCode: "ARB-01",
+    noOfMembers: 10,
+    speakingContents: 20,
+    vocaContents: 30,
+    creationDate: "2021-10-01",
+    creator: "John Doe",
+    idOrEmail: "abcd@email.com",
+  });
+}
+
 export default {
   page29Columns,
   page29Rows,

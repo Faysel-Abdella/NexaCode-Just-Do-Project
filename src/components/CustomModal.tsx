@@ -19,6 +19,7 @@ const CustomModal = ({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      // overflow: "auto",
     },
     content: {
       backgroundColor: "#fff",

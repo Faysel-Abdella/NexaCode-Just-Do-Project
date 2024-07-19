@@ -2,22 +2,21 @@ import { useState } from "react";
 
 import CustomModal from "../components/CustomModal";
 
-const Page21 = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+const Page21 = ({
+  openTheModal,
+  modalData,
+  handleCloseModal,
+}: {
+  openTheModal: boolean;
+  modalData: any;
+  handleCloseModal: () => void;
+}) => {
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
 
   const [selectedIdType, setSelectedIdType] = useState<
     "normal" | "stop" | "delete" | ""
   >("normal");
-
-  const handleOpenModal = () => {
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
 
   const handleOpenConfirmationModal = () => {
     setConfirmationModalOpen(true);
@@ -29,23 +28,8 @@ const Page21 = () => {
 
   return (
     <section>
-      <div className="flex flex-col items-center gap-3">
-        <button
-          className="bg-slate-400 w-fit py-2 px-2 rounded-lg text-white"
-          onClick={handleOpenModal}
-        >
-          Click Here to Open the Modal
-        </button>
-        <button
-          className="bg-slate-400 w-fit py-2 px-2 rounded-lg text-white"
-          onClick={handleOpenModal}
-        >
-          모달을 열려면 여기를 클릭하세요
-        </button>
-      </div>
-
-      <CustomModal isOpen={modalOpen} onClose={handleCloseModal}>
-        <section className="w-[600px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
+      <CustomModal isOpen={openTheModal} onClose={handleCloseModal}>
+        <section className="min-w-[700px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
           <div className=" border-b-2 border-gray-400 ">
             <div className="flex justify-between items-center px-2">
               <h3>ID 설정</h3>
@@ -58,18 +42,15 @@ const Page21 = () => {
             </div>
           </div>
 
-          <h3 className="text-left py-3">선택 12명</h3>
-          <div className="grid grid-cols-4 border-b-2 border-gray-600 pb-2 px-2">
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
-            <p>abcd@email.com</p>
+          <h3 className="text-left py-3">선택 {modalData.length}명</h3>
+          <div className="overflow-auto max-h-[250px]">
+            <div className="grid grid-cols-5 border-b-2 border-gray-600 pb-2 px-2">
+              {modalData.map((item: any) => (
+                <p key={Math.random()} className="p-2">
+                  {item}
+                </p>
+              ))}
+            </div>
           </div>
 
           <div className="mt-3 px-3">

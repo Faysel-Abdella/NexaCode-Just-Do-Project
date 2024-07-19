@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
-import forwardArrow from "../assets/forwardArrow.svg";
-import prevArrow from "../assets/prevArrow.svg";
+
 import page54Data from "../data/tablesData/page54";
 
 const Page54 = () => {
@@ -149,39 +150,16 @@ const Page54 = () => {
           </button>
         </div>
 
-        <div className=" flex items-center justify-center mb-6 h-[60px]">
-          <button
-            className={`mr-2 p-2 ${
-              currentPage === 1 ? "cursor-not-allowed" : " hover:bg-gray-300"
-            } text-white  rounded-full`}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <img src={prevArrow} alt="something" />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              className={`mr-2 p-0 ${
-                currentPage === page ? "text-black" : "text-gray-400"
-              } mx-2 text-medium font-medium  rounded-full`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            className={`ml-2 p-2 ${
-              currentPage === totalPages
-                ? " cursor-not-allowed"
-                : " hover:bg-gray-300"
-            } text-white rounded-full`}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <img src={forwardArrow} alt="arrow" />
-          </button>
-        </div>
+        <Stack spacing={2} className="flex items-center justify-center">
+          <Pagination
+            count={totalPages}
+            showFirstButton
+            showLastButton
+            onChange={(_event, value) => {
+              handlePageChange(value);
+            }}
+          />
+        </Stack>
       </main>
 
       <CustomModal

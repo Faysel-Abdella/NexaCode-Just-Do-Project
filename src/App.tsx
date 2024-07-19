@@ -1,15 +1,13 @@
 import "./App.css";
 import Page18 from "./pages/Page18";
 import Page19And20 from "./pages/Page19And20";
-import Page21 from "./pages/Page21";
+
 import Page22 from "./pages/Page22";
 import Page24 from "./pages/Page24";
 import Page25 from "./pages/Page25";
-import Page26 from "./pages/Page26";
 import Page27 from "./pages/Page27";
 import Page29 from "./pages/Page29";
 import Page30 from "./pages/Page30";
-import Page31 from "./pages/Page31";
 import Page32 from "./pages/Page32";
 import Page34 from "./pages/Page34";
 import Page36 from "./pages/Page36";
@@ -30,6 +28,7 @@ import Page54 from "./pages/Page54";
 import Page55 from "./pages/Page55";
 import Page56 from "./pages/Page56";
 import Page58 from "./pages/Page58";
+import Page59 from "./pages/Page59";
 
 const PageHeader = ({ content }: { content: string }) => {
   return (
@@ -48,24 +47,20 @@ function App() {
       <Page18 />
       <PageHeader content="Page Number 19 and 20 👇👇👇" />
       <Page19And20 />
-      <PageHeader content="Page Number 21 Modals 👇👇👇" />
-      <Page21 />
+
       <PageHeader content="Page Number 22 👇👇👇" />
       <Page22 />
       <PageHeader content="Page Number 24 👇👇👇" />
       <Page24 />
       <PageHeader content="Page Number 25 👇👇👇" />
       <Page25 />
-      <PageHeader content="Page Number 26 (Modals) 👇👇👇" />
-      <Page26 />
+
       <PageHeader content="Page Number 27 👇👇👇" />
       <Page27 />
       <PageHeader content="Page Number 29 👇👇👇" />
       <Page29 />
       <PageHeader content="Page Number 30 👇👇👇" />
       <Page30 />
-      <PageHeader content="Page Number 31 👇👇👇" />
-      <Page31 />
       <PageHeader content="Page Number 32 👇👇👇" />
       <Page32 />
       <PageHeader content="Page Number 34 👇👇👇" />
@@ -106,6 +101,8 @@ function App() {
       <Page56 />
       <PageHeader content="Page Number 58 👇👇👇" />
       <Page58 />
+      <PageHeader content="Page Number 59 👇👇👇" />
+      <Page59 />
     </>
   );
 }

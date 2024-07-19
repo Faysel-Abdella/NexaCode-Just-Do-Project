@@ -1,27 +1,48 @@
 import { useState } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 
 import calender from "../assets/calender.png";
 import page18Data from "../data/tablesData/page18";
-import forwardArrow from "../assets/forwardArrow.svg";
-import prevArrow from "../assets/prevArrow.svg";
+
+import DataShowModal from "./Page21";
 
 const Page18 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
+
   const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
+  const [allListCheckedPageNumbers, setAllListCheckedPageNumbers] = useState<
+    number[]
+  >([]);
+
+  const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page18Data.rows18.length / itemsPerPage);
+  const totalPages = Math.ceil(page18Data.page18Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page18Data.rows18.slice(startIndex, endIndex);
+  const currentData = page18Data.page18Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleSortData = () => {
+    setIsArrayReverse(!isArrayReverse);
+    page18Data.page18Rows.reverse();
+  };
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -101,39 +122,55 @@ const Page18 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="text-center py-1 px-5 border-r border-gray-400">
+                <th className="w-[62px] text-center py-1 px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
-                      if (isAllChecked) {
-                        setClickedRowIds([]);
+                      if (allListCheckedPageNumbers.includes(currentPage)) {
+                        setAllListCheckedPageNumbers(
+                          allListCheckedPageNumbers.filter(
+                            (number) => number !== currentPage
+                          )
+                        );
+                        setClickedRowIds(
+                          clickedRowIds.filter(
+                            (id) =>
+                              !currentData
+                                .map((item) => item.number)
+                                .includes(id)
+                          )
+                        );
                       } else {
                         setClickedRowIds([
-                          ...page18Data.rows18.map((item) => item.number),
+                          ...clickedRowIds,
+                          ...currentData.map((item) => item.number),
+                        ]);
+                        setAllListCheckedPageNumbers([
+                          ...allListCheckedPageNumbers,
+                          currentPage,
                         ]);
                       }
-                      setIsAllChecked(!isAllChecked);
                     }}
-                    className={`size-5 flex justify-center items-center rounded-sm text-white ${
-                      isAllChecked
+                    className={` w-[18px] h-[18px] flex justify-center items-center rounded-sm text-white ${
+                      allListCheckedPageNumbers.includes(currentPage)
                         ? "bg-blue-500 border-[2px] border-blue-500"
                         : "border-[3px] border-gray-500"
                     }  `}
                   >
-                    {isAllChecked && (
+                    {allListCheckedPageNumbers.includes(currentPage) && (
                       <p className="flex items-center justify-center text-white text-[22px]">
                         ✓
                       </p>
                     )}
                   </button>
                 </th>
-                {page18Data.columns18.map((item) => (
+                {page18Data.page18Columns.map((item) => (
                   <th
                     key={item}
                     className={`text-center border-r border-gray-400 ${
                       item == "Purpose" ? "border-r-0" : ""
                     }`}
                   >
-                    <p
+                    <button
                       className={`
                         ${
                           item === "Connected Country" ||
@@ -147,10 +184,18 @@ const Page18 = () => {
                             : "px-5"
                         }
                         ${item === "Connected Country" ? "w-[130px] " : ""}
+                        ${item === "No." ? "cursor-pointer" : ""}
                         `}
+                      onClick={() => {
+                        if (item === "No.") {
+                          handleSortData();
+                          setAllListCheckedPageNumbers([]);
+                          setClickedRowIds([]);
+                        }
+                      }}
                     >
                       {item} ▼
-                    </p>
+                    </button>
                   </th>
                 ))}
               </tr>
@@ -159,7 +204,7 @@ const Page18 = () => {
             <tbody className="border-b-2 border-gray-800">
               {currentData.map((row) => (
                 <tr key={row.number}>
-                  <td className="py-3 border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
+                  <td className="py-3 w-[62px] border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
                     <button
                       className={`text-center w-[18px] h-[18px] rounded-sm
                          flex justify-center items-center 
@@ -219,7 +264,10 @@ const Page18 = () => {
         </div>
 
         <div className="flex items-center gap-9 self-start mt-3">
-          <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
+          <button
+            className="bg-zinc-200 py-1 px-6 rounded-md font-semibold"
+            onClick={handleOpenModal}
+          >
             선택 설정
           </button>
           <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
@@ -227,40 +275,25 @@ const Page18 = () => {
           </button>
         </div>
 
-        <div className=" flex items-center justify-center mb-6 h-[60px]">
-          <button
-            className={`mr-2 p-2 ${
-              currentPage === 1 ? "cursor-not-allowed" : " hover:bg-gray-300"
-            } text-white  rounded-full`}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <img src={prevArrow} alt="something" />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              className={`mr-2 p-0 ${
-                currentPage === page ? "text-black" : "text-gray-400"
-              } mx-2 text-medium font-medium  rounded-full`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button
-            className={`ml-2 p-2 ${
-              currentPage === totalPages
-                ? " cursor-not-allowed"
-                : " hover:bg-gray-300"
-            } text-white rounded-full`}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <img src={forwardArrow} alt="arrow" />
-          </button>
-        </div>
+        <Stack spacing={2} className="flex items-center justify-center">
+          <Pagination
+            count={totalPages}
+            showFirstButton
+            showLastButton
+            onChange={(_event, value) => {
+              handlePageChange(value);
+            }}
+          />
+        </Stack>
       </main>
+
+      <DataShowModal
+        modalData={page18Data.page18Rows
+          .filter((row) => clickedRowIds.includes(row.number))
+          .map((row) => row.idOrEmail)}
+        openTheModal={modalOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </section>
   );
 };
