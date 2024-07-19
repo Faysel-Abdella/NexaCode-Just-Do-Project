@@ -25,7 +25,7 @@ const Page24 = () => {
     <section>
       <header className="flex items-center justify-between mb-3">
         <article className="flex flex-col gap-1">
-          <div className="flex gap-2  font-semibold text-[18px] ">
+          <div className="flex gap-2 font-semibold text-[18px] ">
             <h2>Speaking :</h2>
             <h2>760,943</h2>
           </div>

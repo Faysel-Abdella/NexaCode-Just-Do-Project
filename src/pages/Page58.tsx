@@ -3,7 +3,7 @@ import { useState } from "react";
 import CustomSelectOptions from "../components/CustomSelectOptions";
 
 import calender from "../assets/calender.png";
-import page18Data from "../data/tablesData/page18";
+import page58Data from "../data/tablesData/page58";
 import forwardArrow from "../assets/forwardArrow.svg";
 import prevArrow from "../assets/prevArrow.svg";
 
@@ -13,12 +13,12 @@ const Page18 = () => {
   const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(page18Data.rows18.length / itemsPerPage);
+  const totalPages = Math.ceil(page58Data.page58Rows.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentData = page18Data.rows18.slice(startIndex, endIndex);
+  const currentData = page58Data.page58Rows.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -29,16 +29,16 @@ const Page18 = () => {
       <header className="flex items-center justify-between mb-3">
         <article className="flex flex-col gap-1">
           <div className="flex gap-2  font-semibold text-[18px] ">
-            <h2>전체회원 :</h2>
-            <h2>3,560,000</h2>
+            <h2>Speaking Practice :</h2>
+            <h2>560</h2>
           </div>
           <div className="flex gap-2 font-semibold text-[18px] ">
-            <h2>전체유료회원 :</h2>
-            <h2>23,470</h2>
+            <h2>Vocabulary :</h2>
+            <h2>220</h2>
           </div>
           <div className="flex gap-2 font-semibold text-[18px] ">
-            <h2>검색 된 항목 :</h2>
-            <h2>3,560,000</h2>
+            <h2>Retrieved :</h2>
+            <h2>780</h2>
           </div>
         </article>
 
@@ -64,28 +64,31 @@ const Page18 = () => {
             </div>
             <div className="flex gap-2 items-center justify-end">
               <CustomSelectOptions
+                label="Language"
+                options={["영어", "스페인어"]}
+                outerStyles="w-[100px]"
+              />
+              <CustomSelectOptions
+                label="Type"
+                options={["Speaking", "Voca"]}
+                outerStyles="w-[100px]"
+              />
+
+              <CustomSelectOptions
                 label="Status"
                 options={["정상", "정지"]}
                 outerStyles="w-[100px]"
               />
+
               <CustomSelectOptions
-                label="Connected Country"
-                options={["Korea", "USA", "China"]}
-                outerStyles="w-[200px]"
-              />
-              <CustomSelectOptions
-                label="Member"
-                options={["New", "Later"]}
+                label="Category"
+                options={["LIFE", "Not Sharing"]}
                 outerStyles="w-[100px]"
               />
-              <CustomSelectOptions
-                label="Purpose"
-                options={["For studying", "For fun", "For better business"]}
-                outerStyles="w-[150px]"
-              />
+
               <input
-                className="border border-gray-950 py-[2px] px-1 focus:outline-none"
-                placeholder="Name, ID search"
+                className="min-w-[400px] border border-gray-950 py-[2px] px-1 focus:outline-none"
+                placeholder="Title, Code, 내용, Admin ID, Note search"
               />
             </div>
           </div>
@@ -108,7 +111,7 @@ const Page18 = () => {
                         setClickedRowIds([]);
                       } else {
                         setClickedRowIds([
-                          ...page18Data.rows18.map((item) => item.number),
+                          ...page58Data.page58Rows.map((item) => item.number),
                         ]);
                       }
                       setIsAllChecked(!isAllChecked);
@@ -126,7 +129,7 @@ const Page18 = () => {
                     )}
                   </button>
                 </th>
-                {page18Data.columns18.map((item) => (
+                {page58Data.page58Columns.map((item) => (
                   <th
                     key={item}
                     className={`text-center border-r border-gray-400 ${
@@ -185,32 +188,44 @@ const Page18 = () => {
                     </button>
                   </td>
                   <td className=" border-r border-gray-400 ">{row.number}</td>
-                  <td className="text-left text-nowrap  px-4 border-r border-collapse border-gray-400 ">
-                    {row.name}
+                  <td className="text-nowrap  px-4 border-r border-collapse border-gray-400 ">
+                    {row.language}
                   </td>
-                  <td className="text-left text-nowrap px-3  border-r border-collapse border-gray-400 ">
-                    {row.idOrEmail}
+                  <td className="text-left max-w-[300px] min-w-[300px] overflow-hidden text-ellipsis text-nowrap px-3  border-r border-collapse border-gray-400 ">
+                    {row.title}
                   </td>
                   <td className="px-2 text-nowrap border-r border-collapse border-gray-400">
-                    {row.status}
+                    {row.type}
                   </td>
                   <td className="text-nowrap border-r border-collapse border-gray-400">
-                    {row.connectedCountry}
+                    {row.status}
                   </td>
                   <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
-                    {row.signUpDate}
+                    {row.category}
                   </td>
                   <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
-                    {row.paidMember}
+                    {row.connectedCode}
                   </td>
                   <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
-                    {row.lastAccess}
+                    {row.numberOfContents}
                   </td>
                   <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
-                    {row.drillAchievement}
+                    {row.size}
                   </td>
                   <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
-                    {row.Purpose}
+                    {row.downloads}
+                  </td>
+                  <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
+                    {row.creationDate}
+                  </td>
+                  <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
+                    {row.adminId}
+                  </td>
+                  <td className="text-nowrap px-2 border-r border-collapse border-gray-400">
+                    {row.department}
+                  </td>
+                  <td className="max-w-[300px] min-w-[300px] overflow-hidden text-ellipsis text-nowrap text-left px-2 border-r border-collapse border-gray-400">
+                    {row.note}
                   </td>
                 </tr>
               ))}
@@ -218,13 +233,21 @@ const Page18 = () => {
           </table>
         </div>
 
-        <div className="flex items-center gap-9 self-start mt-3">
-          <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
-            선택 설정
-          </button>
-          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
-            엑셀 다운로드
-          </button>
+        <div className="flex items-center justify-between gap-9 self-start mt-3">
+          <div className="flex items-center gap-5">
+            <button className="bg-zinc-200 py-1 px-6 rounded-md font-semibold">
+              삭제
+            </button>
+            <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
+              엑셀 다운로드
+            </button>
+          </div>
+
+          <div>
+            <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
+              엑셀 다운로드
+            </button>
+          </div>
         </div>
 
         <div className=" flex items-center justify-center mb-6 h-[60px]">

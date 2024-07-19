@@ -57,7 +57,7 @@ const Page19 = () => {
         </div>
 
         {/* 학습 정보 | 학습 정보 | 학습 정보 | 학습 정보 */}
-        <div className="mt-2 flex gap-10 border-b-2 border-gray-400 pb-2 ">
+        <div className="relative mt-2 flex gap-10 border-b-2 border-gray-400 pb-2 ">
           <h2 className="font-semibold text-[24px] text-gray-500">학습 정보</h2>
           <div className="w-[70%] border border-gray-500 border-collapse">
             <div className="flex border-b border-gray-500 border-collapse">
@@ -115,9 +115,10 @@ const Page19 = () => {
               </div>
             </div>
           </div>
+
           {/* Profile Details */}
           {showProfile && (
-            <div className="relative flex items-center justify-center ml-3 self-center h-[250px] w-[200px] bg-slate-200">
+            <div className="absolute right-5 top-10 flex items-center justify-center ml-3 self-center h-[250px] w-[200px] bg-slate-300">
               <img src={profile} alt="profile" />
               <button
                 className="absolute top-1 right-2 text-[24px]"
@@ -163,7 +164,9 @@ const Page19 = () => {
 
         {/* 그룹 정보 | 그룹 정보 | 그룹 정보 | 그룹 정보 */}
         <div className="flex gap-10 mt-2">
-          <h2 className="font-semibold text-[24px] text-gray-500">그룹 정보</h2>
+          <h2 className="font-semibold text-[24px] text-gray-500 text-nowrap">
+            그룹 정보
+          </h2>
 
           <div>
             {/* Created Groups */}
