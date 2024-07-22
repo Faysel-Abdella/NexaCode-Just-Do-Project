@@ -46,9 +46,11 @@ const Page39 = ({
   };
 
   const removeRow = (index: number) => {
-    const updatedRow = rows.filter((item) => item.id !== index);
+    if (index > 1) {
+      const updatedRow = rows.filter((item) => item.id !== index);
 
-    setRows(updatedRow);
+      setRows(updatedRow);
+    }
   };
 
   const handleMoveUp = (index: number) => {
