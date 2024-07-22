@@ -6,13 +6,9 @@ import calender from "../assets/calender.png";
 const Page39 = ({
   openTheModal,
   handleCloseModal,
-  refresher,
-  setRefresher,
 }: {
   openTheModal: boolean;
   handleCloseModal: () => void;
-  refresher?: boolean;
-  setRefresher?: (value: boolean) => void;
 }) => {
   useEffect(() => {
     if (!openTheModal) {

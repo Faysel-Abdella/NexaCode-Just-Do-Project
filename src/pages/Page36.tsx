@@ -316,8 +316,6 @@ const Page36 = () => {
       <NewRegisterModal
         openTheModal={isNewRegisterModalOpen}
         handleCloseModal={handleCloseNewRegisterModal}
-        refresher={refresher}
-        setRefresher={setRefresher}
       />
     </section>
   );
