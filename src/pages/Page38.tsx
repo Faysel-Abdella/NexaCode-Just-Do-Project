@@ -45,6 +45,14 @@ const Page38 = ({
     setRows(updatedRow);
   };
 
+  const removeRow = (index: number) => {
+    if (index > 1) {
+      const updatedRow = rows.filter((item) => item.id !== index);
+
+      setRows(updatedRow);
+    }
+  };
+
   const handleMoveUp = (index: number) => {
     if (index > 0) {
       const updatedRows = [...rows];
@@ -309,7 +317,7 @@ const Page38 = ({
                             <div className="flex items-center justify-center gap-2">
                               <button
                                 className="flex items-center justify-center h-[26px] font-semibold text-[20px] bg-zinc-400 text-gray-600 py-1 px-2"
-                                //   onClick={handleOpenConfirmationModal}
+                                onClick={() => removeRow(item.id)}
                               >
                                 &#x2212;
                               </button>

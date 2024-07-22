@@ -18,6 +18,7 @@ const Page36 = () => {
     number[]
   >([]);
   const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
+  const [refresher, setRefresher] = useState<boolean>(false);
 
   const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
   const [isModifyModalOpen, setIsModifyModalOpen] = useState<boolean>(false);
@@ -64,10 +65,6 @@ const Page36 = () => {
         setIsModifyModalOpen(true);
       } else {
         setIsDetailModalOpen(true);
-        console.log(currentTime, startTime, endTime);
-        console.log(currentDate);
-        console.log(startDate);
-        console.log(endDate);
       }
     }
   };
@@ -287,7 +284,10 @@ const Page36 = () => {
           </div>
           <button
             className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white"
-            onClick={handleNewRegisterModal}
+            onClick={() => {
+              handleNewRegisterModal();
+              setRefresher(!refresher);
+            }}
           >
             새 배너 등록
           </button>
@@ -316,6 +316,8 @@ const Page36 = () => {
       <NewRegisterModal
         openTheModal={isNewRegisterModalOpen}
         handleCloseModal={handleCloseNewRegisterModal}
+        refresher={refresher}
+        setRefresher={setRefresher}
       />
     </section>
   );

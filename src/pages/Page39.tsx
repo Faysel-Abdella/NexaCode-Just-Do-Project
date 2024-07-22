@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
@@ -6,11 +6,22 @@ import calender from "../assets/calender.png";
 const Page39 = ({
   openTheModal,
   handleCloseModal,
+  refresher,
+  setRefresher,
 }: {
   openTheModal: boolean;
   handleCloseModal: () => void;
+  refresher?: boolean;
+  setRefresher?: (value: boolean) => void;
 }) => {
-  const [rows, setRows] = useState([
+  useEffect(() => {
+    if (!openTheModal) {
+      // Reset rows to initial state when the modal is closed
+      setRows(initialRows);
+    }
+  }, [openTheModal]);
+
+  const initialRows = [
     {
       id: 1,
       imagePath: "",
@@ -29,7 +40,9 @@ const Page39 = ({
       imageUrl: "https://",
       hits: "",
     },
-  ]);
+  ];
+
+  const [rows, setRows] = useState(initialRows);
 
   const addNewRow = () => {
     const newRow = {
