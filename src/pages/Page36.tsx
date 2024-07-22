@@ -3,6 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
+import DataShowModal from "./Page37";
 
 import calender from "../assets/calender.png";
 
@@ -15,6 +16,7 @@ const Page36 = () => {
     number[]
   >([]);
   const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page36Data.page36Rows.length / itemsPerPage);
@@ -31,6 +33,14 @@ const Page36 = () => {
   const handleSortData = () => {
     setIsArrayReverse(!isArrayReverse);
     page36Data.page36Rows.reverse();
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const showDetailModal = (_id: number) => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -88,7 +98,7 @@ const Page36 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="py-2 w-[62px] text-center  px-5 border-r border-gray-400">
+                <th className="py-2 text-center  px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
                       if (allListCheckedPageNumbers.includes(currentPage)) {
@@ -154,7 +164,7 @@ const Page36 = () => {
             <tbody className="border-b-2 border-gray-800 text-nowrap">
               {currentData.map((row) => (
                 <tr key={row.number}>
-                  <td className="py-3 w-[62px] border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
+                  <td className="py-3 px-5 border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
                     <button
                       className={`text-center w-[18px] h-[18px] rounded-sm
                          flex justify-center items-center 
@@ -181,8 +191,13 @@ const Page36 = () => {
                   </td>
                   <td className=" border-r border-gray-400 ">{row.number}</td>
                   <td className=" border-r border-gray-400 ">{row.code}</td>
-                  <td className="text-left max-w-[400px] min-w-[400px] overflow-hidden text-ellipsis text-nowrap  underline underline-offset-2  px-4 border-r border-collapse border-gray-400 ">
-                    {row.title}
+                  <td className="max-w-[400px] min-w-[400px] px-2 border-r border-collapse border-gray-400 ">
+                    <button
+                      className="w-full text-left  overflow-hidden text-ellipsis text-nowrap  underline underline-offset-2"
+                      onClick={() => showDetailModal(row.number)}
+                    >
+                      {row.title}
+                    </button>
                   </td>
                   <td className="text-center text-nowrap  px-3  border-r border-collapse border-gray-400 ">
                     {row.status}
@@ -249,6 +264,11 @@ const Page36 = () => {
           />
         </Stack>
       </main>
+
+      <DataShowModal
+        openTheModal={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
     </section>
   );
 };

@@ -89,7 +89,7 @@ const Page42 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="py-2 w-[62px] text-center  px-5 border-r border-gray-400">
+                <th className="py-2 text-center  px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
                       if (allListCheckedPageNumbers.includes(currentPage)) {

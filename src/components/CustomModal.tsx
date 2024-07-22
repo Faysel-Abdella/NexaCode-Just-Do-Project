@@ -4,10 +4,12 @@ const CustomModal = ({
   isOpen,
   onClose,
   children,
+  minWidth,
 }: {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  minWidth?: string;
 }) => {
   const handleModalClose = () => {
     onClose();
@@ -25,10 +27,11 @@ const CustomModal = ({
       backgroundColor: "#fff",
       border: "none",
       //   borderRadius: "4px",
-      //   padding: "10px 20px",
+      // padding: "10px 20px",
       //   paddingRight: "40px",
-      //   minWidth: "600px",
-      //   minHeight: "600px",
+      // minWidth: "1300px",
+      // minHeight: "100vh",
+      minWidth: minWidth ?? minWidth,
       margin: "0 auto",
     },
   };

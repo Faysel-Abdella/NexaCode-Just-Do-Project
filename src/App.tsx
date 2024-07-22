@@ -11,7 +11,6 @@ import Page30 from "./pages/Page30";
 import Page32 from "./pages/Page32";
 import Page34 from "./pages/Page34";
 import Page36 from "./pages/Page36";
-import Page37 from "./pages/Page37";
 import Page38 from "./pages/Page38";
 import Page39 from "./pages/Page39";
 import Page40 from "./pages/Page40";
@@ -67,8 +66,7 @@ function App() {
       <Page34 />
       <PageHeader content="Page Number 36 👇👇👇" />
       <Page36 />
-      <PageHeader content="Page Number 37 👇👇👇" />
-      <Page37 />
+
       <PageHeader content="Page Number 38 👇👇👇" />
       <Page38 />
       <PageHeader content="Page Number 39 👇👇👇" />

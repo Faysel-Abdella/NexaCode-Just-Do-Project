@@ -104,7 +104,7 @@ const Page32 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="w-[62px] text-center py-1 px-5 border-r border-gray-400">
+                <th className=" text-center py-1 px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
                       if (allListCheckedPageNumbers.includes(currentPage)) {
@@ -179,7 +179,7 @@ const Page32 = () => {
             <tbody className="border-b-2 border-gray-800 text-nowrap">
               {currentData.map((row) => (
                 <tr key={row.number}>
-                  <td className="py-3 w-[62px] border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
+                  <td className="py-3 px-5  border-r border-collapse border-gray-400 text-center  flex justify-center items-center  ">
                     <button
                       className={`text-center w-[18px] h-[18px] rounded-sm
                          flex justify-center items-center 
