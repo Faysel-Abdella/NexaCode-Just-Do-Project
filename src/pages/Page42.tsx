@@ -34,6 +34,7 @@ const Page42 = () => {
     setIsArrayReverse(!isArrayReverse);
     page42Data.page42Rows.reverse();
   };
+
   return (
     <section>
       <header className="flex items-center justify-between mb-3">
@@ -86,7 +87,7 @@ const Page42 = () => {
 
       <main>
         <div className="overflow-x-auto pb-5">
-          <table className="w-full">
+          <table className="">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
                 <th className="w-[62px] flex justify-center py-2 text-center  px-5 border-r border-gray-400">
@@ -181,7 +182,7 @@ const Page42 = () => {
                     </button>
                   </td>
                   <td className=" border-r border-gray-400 ">{row.number}</td>
-                  <td className="text-left max-w-[400px] min-w-[400px] overflow-hidden text-ellipsis text-nowrap px-4 border-r border-collapse border-gray-400 ">
+                  <td className="text-left max-w-[600px] min-w-[600px] overflow-hidden text-ellipsis text-nowrap px-4 border-r border-collapse border-gray-400 ">
                     <div className="flex items-center gap-4">
                       <p>{row.title}</p>
                       {row.isImageAttached && (
@@ -201,7 +202,11 @@ const Page42 = () => {
                     {row.postDate}
                   </td>
 
-                  <td className="px-3 border-r border-collapse border-gray-400">
+                  <td
+                    className="px-3 text-left
+                  max-w-[300px] min-w-[300px]  text-nowrap
+                  border-r border-collapse border-gray-400"
+                  >
                     <a className="underline underline-offset-1">{row.poster}</a>
                   </td>
                 </tr>

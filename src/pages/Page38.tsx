@@ -1,7 +1,4 @@
 import { useState } from "react";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-
 import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
@@ -18,29 +15,29 @@ const Page38 = ({
       id: 1,
       imagePath: "2023-june01.png",
       imageUrl: "https://www.hackers.co.kr/",
-      hits: 245,
+      hits: "245",
     },
     {
       id: 2,
       imagePath: "2023-june02.png",
       imageUrl: "https://www.capterra.com/",
-      hits: 746,
+      hits: "746",
     },
     {
       id: 3,
       imagePath: "2023-june03.png",
       imageUrl: "https://www.coursehero.com/",
-      hits: 256,
+      hits: "256",
     },
   ]);
 
-  const addNewRow = ({ index }: { index: number }) => {
+  const addNewRow = () => {
     const newRow = {
-      id: index + 1,
+      id: rows.length + 1,
 
       imagePath: "",
       imageUrl: "",
-      hits: 0,
+      hits: "0",
     };
 
     const updatedRow = [...rows, newRow];
@@ -48,17 +45,54 @@ const Page38 = ({
     setRows(updatedRow);
   };
 
+  const handleMoveUp = (index: number) => {
+    if (index > 0) {
+      const updatedRows = [...rows];
+      const temp = updatedRows[index - 1];
+      updatedRows[index - 1] = updatedRows[index];
+      updatedRows[index] = temp;
+      setRows(updatedRows);
+      console.log(updatedRows);
+    }
+  };
+
+  const handleMoveDown = (index: number) => {
+    if (index < rows.length - 1) {
+      const updatedRows = [...rows];
+      const temp = updatedRows[index + 1];
+      updatedRows[index + 1] = updatedRows[index];
+      updatedRows[index] = temp;
+      setRows(updatedRows);
+      console.log(updatedRows);
+    }
+  };
+
+  const handleInputChange = (
+    index: number,
+    value: string,
+    inputType: "imagePath" | "imageUrl" | "hits"
+  ): void => {
+    const updatedRows = [...rows];
+    updatedRows[index][inputType] = value;
+    setRows(updatedRows);
+  };
+
   return (
     <section>
       <CustomModal
         isOpen={openTheModal}
         onClose={handleCloseModal}
-        minWidth="1300px"
+        minWidth="1400px"
       >
         <main className="w-[100%] mx-auto border border-gray-600 py-8 shadow-md shadow-gray-400 ">
           <div className="mx-7 px-2 pb-2 border-b-2 border-gray-600 flex items-center justify-between">
             <p className="font-semibold text-[16px]">배너 상세 정보</p>
-            <button className="font-semibold text-[16px]">✕</button>
+            <button
+              className="font-semibold text-[16px]"
+              onClick={handleCloseModal}
+            >
+              ✕
+            </button>
           </div>
           <div className="flex justify-center mt-14">
             <div className="w-[90%] border border-gray-500 border-collapse">
@@ -164,36 +198,42 @@ const Page38 = ({
                   <table className=" border-2 border-gray-800 border-collapse">
                     <thead>
                       <tr>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
+                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center text-nowrap">
                           조정
                         </th>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
+                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center text-nowrap">
                           순서
                         </th>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse">
+                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-nowrap">
                           이미지 등록
                         </th>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
+                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center text-nowrap">
                           링크 URL
                         </th>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
+                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center text-nowrap">
                           Hits
                         </th>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
+                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center text-nowrap">
                           삭제/추가
                         </th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      {rows.map((item) => (
+                      {rows.map((item, index) => (
                         <tr>
                           <td className="border-2 border-gray-800 border-collapse w-[100px] h-[40px]">
                             <div className="flex items-center justify-center gap-1">
-                              <button className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
+                              <button
+                                className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white"
+                                onClick={() => handleMoveUp(index)}
+                              >
                                 ▲
                               </button>
-                              <button className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
+                              <button
+                                className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white"
+                                onClick={() => handleMoveDown(index)}
+                              >
                                 ▼
                               </button>
                             </div>
@@ -205,7 +245,14 @@ const Page38 = ({
                             <div className="flex items-center gap-1">
                               <input
                                 type="text"
-                                defaultValue={item.imagePath}
+                                value={item.imagePath}
+                                onChange={(e) =>
+                                  handleInputChange(
+                                    index,
+                                    e.target.value,
+                                    "imagePath"
+                                  )
+                                }
                                 className="w-[250px] py-1 px-1 border border-gray-800"
                               />
                               <button className="bg-gray-500 py-1 px-2 text-white font-semibold">
@@ -216,12 +263,26 @@ const Page38 = ({
                           <td className="min-w-[350px] max-w-[350px] overflow-hidden text-ellipsis text-nowrap text-left border-2 border-gray-800 border-collapse px-2">
                             <input
                               type="text"
-                              defaultValue={item.imageUrl}
+                              value={item.imageUrl}
+                              onChange={(e) =>
+                                handleInputChange(
+                                  index,
+                                  e.target.value,
+                                  "imageUrl"
+                                )
+                              }
                               className="w-[300px] py-1 px-1 border border-gray-800"
                             />
                           </td>
-                          <td className="border-2 border-gray-800 border-collapse px-2 text-slate-400">
-                            {item.hits}
+                          <td className="border-2 border-gray-800 border-collapse px-2 ">
+                            <input
+                              type="text"
+                              value={item.hits}
+                              onChange={(e) =>
+                                handleInputChange(index, e.target.value, "hits")
+                              }
+                              className="w-[50px] py-1 px-1 border border-gray-800"
+                            />
                           </td>
                           <td className="border-2 border-gray-800 border-collapse text-center w-[100px]">
                             <div className="flex items-center justify-center gap-2">
@@ -233,7 +294,7 @@ const Page38 = ({
                               </button>
                               <button
                                 className="flex items-center justify-center h-[26px] font-semibold text-[20px] bg-zinc-400 text-gray-600 py-1 px-2"
-                                onClick={() => addNewRow({ index: item.id })}
+                                onClick={() => addNewRow()}
                               >
                                 &#x002B;
                               </button>

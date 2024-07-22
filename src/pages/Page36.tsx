@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack";
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import DataShowModal from "./Page37";
 import ModifyModal from "./Page38";
+import NewRegisterModal from "./Page39";
 
 import calender from "../assets/calender.png";
 
@@ -17,8 +18,11 @@ const Page36 = () => {
     number[]
   >([]);
   const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
+
   const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
   const [isModifyModalOpen, setIsModifyModalOpen] = useState<boolean>(false);
+  const [isNewRegisterModalOpen, setIsNewRegisterModalOpen] =
+    useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page36Data.page36Rows.length / itemsPerPage);
@@ -66,6 +70,14 @@ const Page36 = () => {
         console.log(endDate);
       }
     }
+  };
+
+  const handleNewRegisterModal = () => {
+    setIsNewRegisterModalOpen(true);
+  };
+
+  const handleCloseNewRegisterModal = () => {
+    setIsNewRegisterModalOpen(false);
   };
 
   return (
@@ -273,7 +285,10 @@ const Page36 = () => {
               엑셀 다운로드
             </button>
           </div>
-          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
+          <button
+            className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white"
+            onClick={handleNewRegisterModal}
+          >
             새 배너 등록
           </button>
         </div>
@@ -297,6 +312,10 @@ const Page36 = () => {
       <ModifyModal
         openTheModal={isModifyModalOpen}
         handleCloseModal={handleCloseModifyModal}
+      />
+      <NewRegisterModal
+        openTheModal={isNewRegisterModalOpen}
+        handleCloseModal={handleCloseNewRegisterModal}
       />
     </section>
   );

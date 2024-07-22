@@ -59,7 +59,12 @@ const Page37 = ({
         <main className=" mx-auto border border-gray-600 py-8 shadow-md shadow-gray-400 ">
           <div className="mx-7 px-2 pb-2 border-b-2 border-gray-600 flex items-center justify-between">
             <p className="font-semibold text-[16px]">배너 상세 정보</p>
-            <button className="font-semibold text-[16px]">✕</button>
+            <button
+              className="font-semibold text-[16px]"
+              onClick={handleCloseModal}
+            >
+              ✕
+            </button>
           </div>
           <div className="flex justify-center mt-14">
             <div className="w-[90%] border border-gray-500 border-collapse">

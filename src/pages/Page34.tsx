@@ -6,14 +6,6 @@ const Page34 = () => {
     useState<boolean>(false);
   const [recentDeleteIndex, setRecentDeleteIndex] = useState<number>(0);
 
-  const handleOpenConfirmationModal = () => {
-    setConfirmationModalOpen(true);
-  };
-
-  const handleCloseConfirmationModal = () => {
-    setConfirmationModalOpen(false);
-  };
-
   const [rows, setRows] = useState([
     {
       id: 2,
@@ -41,9 +33,17 @@ const Page34 = () => {
     },
   ]);
 
-  const addNewRow = ({ index }: { index: number }) => {
+  const handleOpenConfirmationModal = () => {
+    setConfirmationModalOpen(true);
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setConfirmationModalOpen(false);
+  };
+
+  const addNewRow = () => {
     const newRow = {
-      id: index + 1,
+      id: rows.length + 2,
       default: "",
     };
 
@@ -56,6 +56,34 @@ const Page34 = () => {
     const updatedRow = rows.filter((item) => item.id !== index);
 
     setRows(updatedRow);
+  };
+
+  const handleMoveUp = (index: number) => {
+    if (index > 0) {
+      const updatedRows = [...rows];
+      const temp = updatedRows[index - 1];
+      updatedRows[index - 1] = updatedRows[index];
+      updatedRows[index] = temp;
+      setRows(updatedRows);
+      console.log(updatedRows);
+    }
+  };
+
+  const handleMoveDown = (index: number) => {
+    if (index < rows.length - 1) {
+      const updatedRows = [...rows];
+      const temp = updatedRows[index + 1];
+      updatedRows[index + 1] = updatedRows[index];
+      updatedRows[index] = temp;
+      setRows(updatedRows);
+      console.log(updatedRows);
+    }
+  };
+
+  const handleInputChange = (index: number, value: string): void => {
+    const updatedRows = [...rows];
+    updatedRows[index].default = value;
+    setRows(updatedRows);
   };
 
   return (
@@ -134,14 +162,20 @@ const Page34 = () => {
               <td className="border-2 border-gray-800 border-collapse px-2"></td>
             </tr>
 
-            {rows.map((item) => (
+            {rows.map((item, index) => (
               <tr>
                 <td className="border-2 border-gray-800 border-collapse w-[100px] h-[40px]">
                   <div className="flex items-center justify-center gap-1">
-                    <button className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
+                    <button
+                      className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white"
+                      onClick={() => handleMoveUp(index)}
+                    >
                       ▲
                     </button>
-                    <button className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
+                    <button
+                      className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white"
+                      onClick={() => handleMoveDown(index)}
+                    >
                       ▼
                     </button>
                   </div>
@@ -152,9 +186,11 @@ const Page34 = () => {
                 <td className="border-2 border-gray-800 border-collapse text-left px-2 py-1">
                   <div>
                     {/* Toggle the tag between <p> and <input /> based on the requirement */}
+
                     <input
-                      defaultValue={item.default}
-                      className="w-[90%] border border-gray-700 py-1 px-2 "
+                      className="w-[90%] border border-gray-700 py-1 px-2"
+                      value={item.default}
+                      onChange={(e) => handleInputChange(index, e.target.value)}
                     />
                   </div>
                 </td>
@@ -197,7 +233,7 @@ const Page34 = () => {
                     </button>
                     <button
                       className="flex items-center justify-center h-[26px] font-semibold text-[20px] bg-zinc-400 text-gray-600 py-1 px-2"
-                      onClick={() => addNewRow({ index: item.id })}
+                      onClick={() => addNewRow()}
                     >
                       &#x002B;
                     </button>

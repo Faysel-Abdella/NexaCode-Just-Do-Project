@@ -40,9 +40,9 @@ const Page48 = () => {
     },
   ]);
 
-  const addNewRow = ({ index }: { index: number }) => {
+  const addNewRow = () => {
     const newRow = {
-      id: index + 1,
+      id: rows.length + 1,
       termOfUse: "",
       imageUrl: "",
     };
@@ -51,6 +51,39 @@ const Page48 = () => {
 
     setRows(updatedRow);
   };
+
+  const handleMoveUp = (index: number) => {
+    if (index > 0) {
+      const updatedRows = [...rows];
+      const temp = updatedRows[index - 1];
+      updatedRows[index - 1] = updatedRows[index];
+      updatedRows[index] = temp;
+      setRows(updatedRows);
+      console.log(updatedRows);
+    }
+  };
+
+  const handleMoveDown = (index: number) => {
+    if (index < rows.length - 1) {
+      const updatedRows = [...rows];
+      const temp = updatedRows[index + 1];
+      updatedRows[index + 1] = updatedRows[index];
+      updatedRows[index] = temp;
+      setRows(updatedRows);
+      console.log(updatedRows);
+    }
+  };
+
+  const handleInputChange = (
+    index: number,
+    value: string,
+    inputType: "termOfUse" | "imageUrl"
+  ): void => {
+    const updatedRows = [...rows];
+    updatedRows[index][inputType] = value;
+    setRows(updatedRows);
+  };
+
   return (
     <section>
       <div className="py-4 px-3 overflow-x-auto flex flex-col justify-center">
@@ -77,14 +110,20 @@ const Page48 = () => {
           </thead>
 
           <tbody>
-            {rows.map((item) => (
+            {rows.map((item, index) => (
               <tr>
                 <td className="border-2 border-gray-800 border-collapse w-[100px] h-[40px]">
                   <div className="flex items-center justify-center gap-1">
-                    <button className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
+                    <button
+                      className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white"
+                      onClick={() => handleMoveUp(index)}
+                    >
                       ▲
                     </button>
-                    <button className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
+                    <button
+                      className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white"
+                      onClick={() => handleMoveDown(index)}
+                    >
                       ▼
                     </button>
                   </div>
@@ -97,14 +136,20 @@ const Page48 = () => {
                     <input
                       type="text"
                       className="w-full py-1 px-1 border border-gray-800"
-                      defaultValue={item.termOfUse}
+                      value={item.termOfUse}
+                      onChange={(e) =>
+                        handleInputChange(index, e.target.value, "termOfUse")
+                      }
                     />
                   </div>
                 </td>
                 <td className="min-w-[350px] max-w-[350px] overflow-hidden text-ellipsis text-nowrap text-left border-2 border-gray-800 border-collapse px-2">
                   <input
                     type="text"
-                    defaultValue={item.imageUrl}
+                    value={item.imageUrl}
+                    onChange={(e) =>
+                      handleInputChange(index, e.target.value, "imageUrl")
+                    }
                     className="w-full py-1 px-1 border border-gray-800"
                   />
                 </td>{" "}
@@ -118,7 +163,7 @@ const Page48 = () => {
                     </button>
                     <button
                       className="flex items-center justify-center h-[26px] font-semibold text-[20px] bg-zinc-400 text-gray-600 py-1 px-2"
-                      onClick={() => addNewRow({ index: item.id })}
+                      onClick={() => addNewRow()}
                     >
                       &#x002B;
                     </button>
