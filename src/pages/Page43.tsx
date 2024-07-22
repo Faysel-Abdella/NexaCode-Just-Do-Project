@@ -139,15 +139,30 @@ const Page43 = () => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-5 mt-3">
-          <button className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600">
-            <p> {pageState === "readOnly" ? "수정" : "취소"}</p>
-          </button>
-          <button
-            className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600"
-            onClick={handleOpenConfirmationModal}
-          >
-            <p> {pageState === "readOnly" ? "삭제" : "저장"}</p>
-          </button>
+          {pageState === "readOnly" ? (
+            <button
+              className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600"
+              onClick={handleEdit}
+            >
+              수정
+            </button>
+          ) : (
+            <button className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600">
+              취소
+            </button>
+          )}
+          {pageState === "readOnly" ? (
+            <button
+              className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600"
+              onClick={handleEdit}
+            >
+              삭제
+            </button>
+          ) : (
+            <button className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600">
+              저장
+            </button>
+          )}
         </div>
       </main>
       {/* Previous and Next Buttons */}

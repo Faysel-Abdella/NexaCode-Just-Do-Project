@@ -56,8 +56,17 @@ const Page48 = () => {
     if (index > 0) {
       const updatedRows = [...rows];
       const temp = updatedRows[index - 1];
-      updatedRows[index - 1] = updatedRows[index];
-      updatedRows[index] = temp;
+
+      updatedRows[index - 1] = {
+        ...updatedRows[index - 1],
+        termOfUse: updatedRows[index].termOfUse,
+        imageUrl: updatedRows[index].imageUrl,
+      };
+      updatedRows[index] = {
+        ...updatedRows[index],
+        termOfUse: temp.termOfUse,
+        imageUrl: temp.imageUrl,
+      };
       setRows(updatedRows);
       console.log(updatedRows);
     }
@@ -67,8 +76,16 @@ const Page48 = () => {
     if (index < rows.length - 1) {
       const updatedRows = [...rows];
       const temp = updatedRows[index + 1];
-      updatedRows[index + 1] = updatedRows[index];
-      updatedRows[index] = temp;
+      updatedRows[index + 1] = {
+        ...updatedRows[index + 1],
+        termOfUse: updatedRows[index].termOfUse,
+        imageUrl: updatedRows[index].imageUrl,
+      };
+      updatedRows[index] = {
+        ...updatedRows[index],
+        termOfUse: temp.termOfUse,
+        imageUrl: temp.imageUrl,
+      };
       setRows(updatedRows);
       console.log(updatedRows);
     }
