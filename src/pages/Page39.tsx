@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
@@ -13,19 +13,19 @@ const Page39 = ({
   const [rows, setRows] = useState([
     {
       id: 1,
-      imagePath: "2023-june01.png",
+      imagePath: "",
       imageUrl: "https://",
       hits: "",
     },
     {
       id: 2,
-      imagePath: "2023-june02.png",
+      imagePath: "",
       imageUrl: "https://",
       hits: "",
     },
     {
       id: 3,
-      imagePath: "2023-june03.png",
+      imagePath: "",
       imageUrl: "https://",
       hits: "",
     },
@@ -37,10 +37,16 @@ const Page39 = ({
 
       imagePath: "",
       imageUrl: "",
-      hits: "0",
+      hits: "",
     };
 
     const updatedRow = [...rows, newRow];
+
+    setRows(updatedRow);
+  };
+
+  const removeRow = (index: number) => {
+    const updatedRow = rows.filter((item) => item.id !== index);
 
     setRows(updatedRow);
   };
@@ -308,7 +314,7 @@ const Page39 = ({
                             <div className="flex items-center justify-center gap-2">
                               <button
                                 className="flex items-center justify-center h-[26px] font-semibold text-[20px] bg-zinc-400 text-gray-600 py-1 px-2"
-                                //   onClick={handleOpenConfirmationModal}
+                                onClick={() => removeRow(item.id)}
                               >
                                 &#x2212;
                               </button>
