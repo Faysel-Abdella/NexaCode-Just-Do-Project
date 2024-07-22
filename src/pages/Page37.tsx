@@ -143,9 +143,6 @@ const Page37 = ({
                     <thead>
                       <tr>
                         <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
-                          조정
-                        </th>
-                        <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
                           순서
                         </th>
                         <th className="py-3 px-2 border-2 border-gray-800 border-collapse">
@@ -163,16 +160,6 @@ const Page37 = ({
                     <tbody>
                       {rows.map((item) => (
                         <tr>
-                          <td className="border-2 border-gray-800 border-collapse w-[100px] h-[40px]">
-                            <div className="flex items-center justify-center gap-1">
-                              <button className=" h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
-                                ▲
-                              </button>
-                              <button className="h-[25px] w-[35px] flex items-center justify-center bg-gray-500 text-white">
-                                ▼
-                              </button>
-                            </div>
-                          </td>
                           <td className="border-2 border-gray-800 border-collapse text-center">
                             {item.id}
                           </td>

@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import DataShowModal from "./Page37";
+import ModifyModal from "./Page38";
 
 import calender from "../assets/calender.png";
 
@@ -16,7 +17,8 @@ const Page36 = () => {
     number[]
   >([]);
   const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
+  const [isModifyModalOpen, setIsModifyModalOpen] = useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page36Data.page36Rows.length / itemsPerPage);
@@ -35,12 +37,35 @@ const Page36 = () => {
     page36Data.page36Rows.reverse();
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseDetailModal = () => {
+    setIsDetailModalOpen(false);
   };
 
-  const showDetailModal = (_id: number) => {
-    setIsModalOpen(true);
+  const handleCloseModifyModal = () => {
+    setIsModifyModalOpen(false);
+  };
+
+  const showModal = (_id: number) => {
+    // Search the item using id
+    const selectedRow = page36Data.page36Rows.find((row) => row.number === _id);
+    if (selectedRow) {
+      const currentDate = new Date();
+      const startDate = new Date(selectedRow.postingPeriod.start);
+      const endDate = new Date(selectedRow.postingPeriod.end);
+
+      const currentTime = currentDate.getTime();
+      const startTime = startDate.getTime();
+      const endTime = endDate.getTime();
+      if (currentTime >= startTime && currentTime <= endTime) {
+        setIsModifyModalOpen(true);
+      } else {
+        setIsDetailModalOpen(true);
+        console.log(currentTime, startTime, endTime);
+        console.log(currentDate);
+        console.log(startDate);
+        console.log(endDate);
+      }
+    }
   };
 
   return (
@@ -98,7 +123,7 @@ const Page36 = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-zinc-300 border-t-2 border-b-2 border-gray-600">
-                <th className="py-2 text-center  px-5 border-r border-gray-400">
+                <th className="flex justify-center py-2 text-center  px-5 border-r border-gray-400">
                   <button
                     onClick={() => {
                       if (allListCheckedPageNumbers.includes(currentPage)) {
@@ -194,7 +219,7 @@ const Page36 = () => {
                   <td className="max-w-[400px] min-w-[400px] px-2 border-r border-collapse border-gray-400 ">
                     <button
                       className="w-full text-left  overflow-hidden text-ellipsis text-nowrap  underline underline-offset-2"
-                      onClick={() => showDetailModal(row.number)}
+                      onClick={() => showModal(row.number)}
                     >
                       {row.title}
                     </button>
@@ -266,8 +291,12 @@ const Page36 = () => {
       </main>
 
       <DataShowModal
-        openTheModal={isModalOpen}
-        handleCloseModal={handleCloseModal}
+        openTheModal={isDetailModalOpen}
+        handleCloseModal={handleCloseDetailModal}
+      />
+      <ModifyModal
+        openTheModal={isModifyModalOpen}
+        handleCloseModal={handleCloseModifyModal}
       />
     </section>
   );

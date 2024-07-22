@@ -16,8 +16,8 @@ const page36Rows = [
     status: "대기",
     stats: ["-", "-", "-"],
     postingPeriod: {
-      start: "2021-09-06",
-      end: "2021-09-10",
+      start: "2024-02-06",
+      end: "2024-05-10",
     },
     postDate: "2021-09-06",
     poster: "Admin ID",
@@ -30,8 +30,8 @@ const page36Rows = [
     status: "진행중",
     stats: ["245", "765", "256"],
     postingPeriod: {
-      start: "2021-09-06",
-      end: "2021-09-10",
+      start: "2024-06-06",
+      end: "2024-07-30",
     },
     postDate: "2021-09-06",
     poster: "Admin ID",
