@@ -62,8 +62,15 @@ const Page34 = () => {
     if (index > 0) {
       const updatedRows = [...rows];
       const temp = updatedRows[index - 1];
-      updatedRows[index - 1] = updatedRows[index];
-      updatedRows[index] = temp;
+
+      updatedRows[index - 1] = {
+        ...updatedRows[index - 1],
+        default: updatedRows[index].default,
+      };
+      updatedRows[index] = {
+        ...updatedRows[index],
+        default: temp.default,
+      };
       setRows(updatedRows);
       console.log(updatedRows);
     }
@@ -73,8 +80,14 @@ const Page34 = () => {
     if (index < rows.length - 1) {
       const updatedRows = [...rows];
       const temp = updatedRows[index + 1];
-      updatedRows[index + 1] = updatedRows[index];
-      updatedRows[index] = temp;
+      updatedRows[index + 1] = {
+        ...updatedRows[index + 1],
+        default: updatedRows[index].default,
+      };
+      updatedRows[index] = {
+        ...updatedRows[index],
+        default: temp.default,
+      };
       setRows(updatedRows);
       console.log(updatedRows);
     }

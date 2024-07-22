@@ -1,10 +1,13 @@
 import { useState } from "react";
 import CustomModal from "../components/CustomModal";
+import CustomSelectOptions from "../components/CustomSelectOptions";
+import Editor from "../components/CKEditor ";
 
 const Page43 = () => {
   const [showProfile, setShowProfile] = useState<boolean>(false);
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
+  const [pageState, setPageState] = useState<"readOnly" | "edit">("readOnly");
 
   const showProfileHandler = () => {
     setShowProfile(true);
@@ -20,6 +23,10 @@ const Page43 = () => {
 
   const handleCloseConfirmationModal = () => {
     setConfirmationModalOpen(false);
+  };
+
+  const handleEdit = () => {
+    setPageState("edit");
   };
 
   return (
@@ -38,7 +45,16 @@ const Page43 = () => {
               <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Title
               </h3>
-              <p className="py-2 px-3">2023-05 프로모션 이벤트 당첨자 발표</p>
+              <div className="py-2 px-3">
+                {pageState === "edit" ? (
+                  <input
+                    className="px-2 py-1 min-w-[700px] border border-gray-600"
+                    defaultValue="2023-05 프로모션 이벤트 당첨자 발표"
+                  />
+                ) : (
+                  <p>2023-05 프로모션 이벤트 당첨자 발표</p>
+                )}
+              </div>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
               <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
@@ -58,22 +74,47 @@ const Page43 = () => {
               <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 Category
               </h3>
-              <p className="py-2 px-3">이벤트</p>
+              <div className="py-2 px-3">
+                {pageState === "edit" ? (
+                  <CustomSelectOptions
+                    label="이벤트"
+                    options={["일반", "시스템", "이벤트", "광고", "구매"]}
+                    outerStyles="min-w-[200px]"
+                  />
+                ) : (
+                  <p>이벤트</p>
+                )}
+              </div>
             </div>
             <div className="flex border-b border-gray-500 border-collapse">
               <h3 className="py-2 px-3 min-w-[200px] text-left bg-zinc-200 border-r border-gray-500">
                 내용
               </h3>
               <div className="py-2 px-3 text-left">
-                <p>2023년 5월 프로모션 이벤트 당첨자를 발표합니다.</p>
-                <p className="mt-2">
-                  참여해 주신 여러분께 감사드리며 아래의 ID로 3개월 무제한 무료
-                  사용 리딤코드를 발송해 드립니다.
-                </p>
+                {pageState === "edit" ? (
+                  <article className="  min-w-[750px] ">
+                    <Editor
+                      initialData={`
+                    <div>
+                        <p>2023년 5월 프로모션 이벤트 당첨자를 발표합니다.</p>
+                        <p>참여해 주신 여러분께 감사드리며 아래의 ID로 3개월 무제한 무료 사용 리딤코드를 발송해 드립니다.</p>
+                         
+                    </div>`}
+                    />
+                  </article>
+                ) : (
+                  <div>
+                    <p>2023년 5월 프로모션 이벤트 당첨자를 발표합니다.</p>
+                    <p className="mt-2">
+                      참여해 주신 여러분께 감사드리며 아래의 ID로 3개월 무제한
+                      무료 사용 리딤코드를 발송해 드립니다.
+                    </p>
 
-                <div className="flex items-center justify-center  w-[400px] h-[500px] mt-10 mb-10 bg-slate-200">
-                  IMAGE
-                </div>
+                    <div className="flex items-center justify-center  w-[400px] h-[500px] mt-10 mb-10 bg-slate-200">
+                      IMAGE
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex relative">
@@ -99,13 +140,13 @@ const Page43 = () => {
         </div>
         <div className="flex items-center justify-center gap-5 mt-3">
           <button className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600">
-            <p>수정</p>
+            <p> {pageState === "readOnly" ? "수정" : "취소"}</p>
           </button>
           <button
             className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600"
             onClick={handleOpenConfirmationModal}
           >
-            <p>삭제</p>
+            <p> {pageState === "readOnly" ? "삭제" : "저장"}</p>
           </button>
         </div>
       </main>

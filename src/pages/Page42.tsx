@@ -225,7 +225,7 @@ const Page42 = () => {
             </button>
           </div>
           <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
-            새 배너 등록
+            새 공지 등록
           </button>
         </div>
 
