@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CustomModal from "../components/CustomModal";
 
 import calender from "../assets/calender.png";
@@ -221,7 +221,7 @@ const Page39 = ({
                   <h3>이미지</h3>
                 </div>
                 <div className="py-4 px-3 overflow-x-auto flex flex-col justify-center">
-                  <table className=" border-2 border-gray-800 border-collapse">
+                  <table className="border-2 border-gray-800 border-collapse">
                     <thead>
                       <tr>
                         <th className="py-3 px-2 border-2 border-gray-800 border-collapse text-center">
