@@ -147,14 +147,17 @@ const Page43 = () => {
               수정
             </button>
           ) : (
-            <button className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600">
+            <button
+              className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600"
+              onClick={handleOpenConfirmationModal}
+            >
               취소
             </button>
           )}
           {pageState === "readOnly" ? (
             <button
               className="py-2 px-10 font-semibold rounded-md bg-zinc-200 text-gray-600"
-              onClick={handleEdit}
+              onClick={handleOpenConfirmationModal}
             >
               삭제
             </button>
@@ -184,7 +187,7 @@ const Page43 = () => {
         <section className="w-[400px] py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 text-black">
           <div className=" border-b-2 border-gray-400 ">
             <div className="flex justify-between items-center px-2">
-              <h3>삭제</h3>
+              <h3>{pageState === "readOnly" ? "삭제" : "작성 취소"}</h3>
               <button
                 className="font-semibold text-[16px]"
                 onClick={handleCloseConfirmationModal}
@@ -196,9 +199,20 @@ const Page43 = () => {
           <div className="flex justify-center items-center">
             <div className="">
               <>
-                <p className="text-center mt-3">삭제 시 해당 내용이</p>
-                <p className="text-center">모두 삭제되며 되돌릴 수 없습니다.</p>
-                <p className="text-center mt-6">삭제 하시겠습니까?</p>
+                <p className="text-center mt-3">
+                  {pageState === "readOnly"
+                    ? "삭제 시 해당 내용이"
+                    : "공지사항 수정을"}
+                </p>
+                <p className="text-center">
+                  {pageState === "readOnly" &&
+                    "모두 삭제되며 되돌릴 수 없습니다."}
+                </p>
+                <p className="text-center mt-6">
+                  {pageState === "readOnly"
+                    ? "삭제 하시겠습니까?"
+                    : "취소 하시겠습니까?"}
+                </p>
                 <div className="flex justify-center items-center gap-3 mt-3">
                   <button
                     className="bg-slate-400 w-fit py-2 px-6 rounded-lg text-white"

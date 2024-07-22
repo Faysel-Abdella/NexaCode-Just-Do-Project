@@ -11,6 +11,22 @@ const Page55 = () => {
   const hideProfileHandler = () => {
     setShowProfile(false);
   };
+
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  const handleImageUpload = (event: any) => {
+    const file = event.target.files?.[0];
+
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        setImageUrl(e.target?.result as string);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <section>
       <main className="border-b-[3px] border-gray-600 pb-8">
@@ -192,14 +208,31 @@ const Page55 = () => {
 
           <div className="relative flex flex-col gap-3">
             <div className="ml-3 cursor-pointer" onClick={showProfileHandler}>
-              <img src={profile} alt="profile" />
+              <img
+                className="size-40 rounded-full"
+                src={imageUrl || profile}
+                alt="profile"
+              />
             </div>
+
+            <label
+              htmlFor="uploadInput"
+              className="bg-gray-300 px-6 py-1 rounded-md text-xl font-semibold"
+            >
+              파일 선택
+            </label>
+            <input
+              id="uploadInput"
+              type="file"
+              style={{ display: "none" }}
+              onChange={handleImageUpload}
+            />
 
             {/* Profile Details */}
             {showProfile && (
               <div className="relative">
                 <div className=" absolute top-5 right-[50%] translate-x-[50%] flex items-center justify-center ml-3 self-center h-[250px] w-[250px] bg-slate-200">
-                  <img src={profile} alt="profile" />
+                  <img src={imageUrl || profile} alt="profile" />
                   <button
                     className="absolute top-1 right-2 text-[24px]"
                     onClick={hideProfileHandler}

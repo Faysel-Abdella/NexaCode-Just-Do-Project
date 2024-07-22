@@ -4,16 +4,21 @@ import Stack from "@mui/material/Stack";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import CustomModal from "../components/CustomModal";
+import NewRegisterModal from "./Page56";
 
 import calender from "../assets/calender.png";
 
 import page54Data from "../data/tablesData/page54";
 
 const Page54 = () => {
+  const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
+
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
 
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isNewRegisterModalOpen, setIsNewRegisterModalOpen] =
+    useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page54Data.page54Rows.length / itemsPerPage);
@@ -34,6 +39,20 @@ const Page54 = () => {
   const handleCloseConfirmationModal = () => {
     setConfirmationModalOpen(false);
   };
+
+  const handleSortData = () => {
+    setIsArrayReverse(!isArrayReverse);
+    page54Data.page54Rows.reverse();
+  };
+
+  const handleOpenNewRegisterModal = () => {
+    setIsNewRegisterModalOpen(true);
+  };
+
+  const handleCloseNewRegisterModal = () => {
+    setIsNewRegisterModalOpen(false);
+  };
+
   return (
     <section>
       <header className="flex items-center justify-end mb-3">
@@ -87,7 +106,16 @@ const Page54 = () => {
                     key={item}
                     className={`text-center border-r border-gray-400 px-3`}
                   >
-                    <p className={`text-nowrap`}>{item} ▼</p>
+                    <button
+                      className={`text-nowrap`}
+                      onClick={() => {
+                        if (item === "No.") {
+                          handleSortData();
+                        }
+                      }}
+                    >
+                      {item} ▼
+                    </button>
                   </th>
                 ))}
               </tr>
@@ -109,7 +137,7 @@ const Page54 = () => {
                   </td>
 
                   <td className="px-3 border-r border-collapse border-gray-400">
-                    <a className="text-blue-600 underline underline-offset-1">
+                    <a className="text-blue-600 underline underline-offset-1 cursor-pointer">
                       {row.idEmail}
                     </a>
                   </td>
@@ -145,7 +173,10 @@ const Page54 = () => {
           >
             엑셀 다운로드
           </button>
-          <button className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white">
+          <button
+            className="bg-gray-500 py-1 px-6 rounded-md font-semibold text-white"
+            onClick={handleOpenNewRegisterModal}
+          >
             새 관리자 등록
           </button>
         </div>
@@ -204,6 +235,11 @@ const Page54 = () => {
           </div>
         </section>
       </CustomModal>
+
+      <NewRegisterModal
+        openTheModal={isNewRegisterModalOpen}
+        handleCloseModal={handleCloseNewRegisterModal}
+      />
     </section>
   );
 };

@@ -21,10 +21,9 @@ import Page46 from "./pages/Page46";
 import Page48 from "./pages/Page48";
 import Page49 from "./pages/Page49";
 import Page50 from "./pages/Page50";
-import Page51 from "./pages/Page51";
 import Page54 from "./pages/Page54";
 import Page55 from "./pages/Page55";
-import Page56 from "./pages/Page56";
+
 import Page58 from "./pages/Page58";
 import Page59 from "./pages/Page59";
 
@@ -84,14 +83,12 @@ function App() {
       <Page49 />
       <PageHeader content="Page Number 50 👇👇👇" />
       <Page50 />
-      <PageHeader content="Page Number 51 & 52 👇👇👇" />
-      <Page51 />
+
       <PageHeader content="Page Number 54 👇👇👇" />
       <Page54 />
       <PageHeader content="Page Number 55 👇👇👇" />
       <Page55 />
-      <PageHeader content="Page Number 56 👇👇👇" />
-      <Page56 />
+
       <PageHeader content="Page Number 58 👇👇👇" />
       <Page58 />
       <PageHeader content="Page Number 59 👇👇👇" />
