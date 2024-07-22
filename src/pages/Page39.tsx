@@ -265,6 +265,7 @@ const Page39 = ({
                             <div className="flex items-center gap-1">
                               <input
                                 type="text"
+                                value={item.imagePath}
                                 onChange={(e) =>
                                   handleInputChange(
                                     index,
