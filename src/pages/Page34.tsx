@@ -4,6 +4,7 @@ import CustomModal from "../components/CustomModal";
 const Page34 = () => {
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
+  const [recentDeleteIndex, setRecentDeleteIndex] = useState<number>(0);
 
   const handleOpenConfirmationModal = () => {
     setConfirmationModalOpen(true);
@@ -47,6 +48,12 @@ const Page34 = () => {
     };
 
     const updatedRow = [...rows, newRow];
+
+    setRows(updatedRow);
+  };
+
+  const removeRow = ({ index }: { index: number }) => {
+    const updatedRow = rows.filter((item) => item.id !== index);
 
     setRows(updatedRow);
   };
@@ -181,7 +188,10 @@ const Page34 = () => {
                   <div className="flex items-center justify-center gap-2">
                     <button
                       className="flex items-center justify-center h-[26px] font-semibold text-[20px] bg-zinc-400 text-gray-600 py-1 px-2"
-                      onClick={handleOpenConfirmationModal}
+                      onClick={() => {
+                        handleOpenConfirmationModal();
+                        setRecentDeleteIndex(item.id);
+                      }}
                     >
                       &#x2212;
                     </button>
@@ -238,7 +248,10 @@ const Page34 = () => {
                   </button>
                   <button
                     className="bg-red-500 w-fit py-2 px-6 rounded-lg text-white"
-                    onClick={handleCloseConfirmationModal}
+                    onClick={() => {
+                      removeRow({ index: recentDeleteIndex });
+                      handleCloseConfirmationModal();
+                    }}
                   >
                     진행
                   </button>
