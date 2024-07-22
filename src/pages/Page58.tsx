@@ -7,10 +7,11 @@ import CustomSelectOptions from "../components/CustomSelectOptions";
 import calender from "../assets/calender.png";
 import page58Data from "../data/tablesData/page58";
 
-const Page18 = () => {
+const Page58 = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
   const [clickedRowIds, setClickedRowIds] = useState<number[]>([]);
+  const [isArrayReverse, setIsArrayReverse] = useState<boolean>(false);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(page58Data.page58Rows.length / itemsPerPage);
@@ -22,6 +23,11 @@ const Page18 = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleSortData = () => {
+    setIsArrayReverse(!isArrayReverse);
+    page58Data.page58Rows.reverse();
   };
 
   return (
@@ -136,7 +142,7 @@ const Page18 = () => {
                       item == "Purpose" ? "border-r-0" : ""
                     }`}
                   >
-                    <p
+                    <button
                       className={`
                         ${
                           item === "Connected Country" ||
@@ -151,9 +157,14 @@ const Page18 = () => {
                         }
                         ${item === "Connected Country" ? "w-[130px] " : ""}
                         `}
+                      onClick={() => {
+                        if (item === "No.") {
+                          handleSortData();
+                        }
+                      }}
                     >
                       {item} ▼
-                    </p>
+                    </button>
                   </th>
                 ))}
               </tr>
@@ -265,4 +276,4 @@ const Page18 = () => {
   );
 };
 
-export default Page18;
+export default Page58;
