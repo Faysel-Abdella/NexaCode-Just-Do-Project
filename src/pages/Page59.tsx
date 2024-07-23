@@ -1,11 +1,36 @@
-// import { useState } from "react";
+import { useState } from "react";
 // import CustomModal from "../components/CustomModal";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import camera from "../assets/camera.png";
 import play from "../assets/play.png";
 
+import { utils, writeFile } from "xlsx";
+import { useCallback } from "react";
+
 const Page59 = () => {
+  const pres = [
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+    { word: " Alter ", meaning: "Change" },
+  ];
+
+  const exportFile = useCallback(() => {
+    /* generate worksheet from state */
+    const ws = utils.json_to_sheet(pres);
+    /* create workbook and append worksheet */
+    const wb = utils.book_new();
+    utils.book_append_sheet(wb, ws, "Data");
+    /* export to XLSX */
+    writeFile(wb, "SheetJSReactAoO.xlsx");
+  }, [pres]);
+
   //   const [confirmationModalOpen, setConfirmationModalOpen] =
   //     useState<boolean>(false);
 
@@ -180,7 +205,10 @@ const Page59 = () => {
 
             <div className="flex items-center gap-3 my-8">
               <h2 className="">EXCEL FILE</h2>
-              <button className="flex items-center justify-center size-7 font-semibold border-2 border-gray-600 rounded-full">
+              <button
+                className="flex items-center justify-center size-7 font-semibold border-2 border-gray-600 rounded-full"
+                onClick={exportFile}
+              >
                 !?
               </button>
             </div>
