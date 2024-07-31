@@ -4,7 +4,7 @@ const CustomSelectOptions = ({
   outerStyles,
   setSelectedOption,
 }: {
-  label: string;
+  label?: string;
   options: string[];
   outerStyles?: string;
   setSelectedOption?: (option: string) => void;
