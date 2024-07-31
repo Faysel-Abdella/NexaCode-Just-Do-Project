@@ -13,6 +13,11 @@ import add from "../assets/add.svg";
 const Page59 = () => {
   const [selectedOption, setSelectedOption] =
     useState<string>("SPEAKING PRACTICE");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("EN");
+  const [title, setTitle] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>("ALL (Default)");
+
   const [cards, setCards] = useState([...Array(1).keys()]);
   const [showImageModal, setShowImageModal] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -119,19 +124,19 @@ const Page59 = () => {
                   <h3 className="py-2 px-3 min-w-[150px] text-left bg-zinc-200 border-r border-gray-500">
                     Language
                   </h3>
-                  <p className="py-2 px-3">영어</p>
+                  <p className="py-2 px-3">{selectedLanguage}</p>
                 </div>
                 <div className="flex border-b border-gray-500 border-collapse">
                   <h3 className="py-2 px-3 min-w-[150px] text-left bg-zinc-200 border-r border-gray-500">
                     Title
                   </h3>
-                  <p className="py-2 px-3">IELTS TEST FOR BEGINNERS</p>
+                  <p className="py-2 px-3">{title}</p>
                 </div>
                 <div className="flex border-b border-gray-500 border-collapse">
                   <h3 className="py-2 px-3 min-w-[150px] text-left bg-zinc-200 border-r border-gray-500">
                     Type
                   </h3>
-                  <p className="py-2 px-3">SPEAKING</p>
+                  <p className="py-2 px-3">{selectedOption}</p>
                 </div>
                 <div className="flex border-b border-gray-500 border-collapse">
                   <h3 className="py-2 px-3 min-w-[150px] text-left bg-zinc-200 border-r border-gray-500">
@@ -214,7 +219,7 @@ const Page59 = () => {
                   <h3 className="py-2 px-3 min-w-[150px] text-left bg-zinc-200 border-r border-gray-500">
                     Category
                   </h3>
-                  <p className="py-2 px-3">LIFE</p>
+                  <p className="py-2 px-3">{selectedCategory}</p>
                 </div>
 
                 <div className="flex items-center w-full">
@@ -242,9 +247,10 @@ const Page59 = () => {
             <div className="w-full">
               <div className="flex border-b border-gray-500 border-collapse">
                 <CustomSelectOptions
-                  label="영어"
-                  options={["1", "2", "3"]}
+                  // label="EN"
+                  options={["EN", "영어"]}
                   outerStyles="w-full py-2 px-3 text-[20px]"
+                  setSelectedOption={setSelectedLanguage}
                 />
               </div>
               <div className="mt-3 flex border-b border-gray-500 border-collapse">
@@ -257,7 +263,11 @@ const Page59 = () => {
               </div>
 
               <div className="mt-3 flex pb-1 border-b-2 border-gray-500 border-collapse">
-                <input className="w-full py-2 px-3 text-[20px] border border-gray-600" />
+                <input
+                  className="w-full py-2 px-3 text-[20px] border border-gray-600"
+                  onChange={(e) => setTitle(e.target.value)}
+                  value={title}
+                />
               </div>
 
               <div className="flex items-center justify-between my-8 ">
@@ -414,8 +424,9 @@ const Page59 = () => {
               <div className="mt-3 w-[90%] mx-auto  border-b border-gray-500 border-collapse">
                 <CustomSelectOptions
                   label="LIFE"
-                  options={["1", "2", "3"]}
+                  options={["LIFE", "ALL (Default)"]}
                   outerStyles="w-full py-2 px-3 text-[20px] "
+                  setSelectedOption={setSelectedCategory}
                 />
               </div>
 
