@@ -1,59 +1,23 @@
-// import CustomModal from "../components/CustomModal";
+import * as XLSX from "xlsx";
+import { useCallback, useState } from "react";
+
+import Card from "../components/Card";
+import ImageViewModal from "../components/ImageViewModal";
 
 import CustomSelectOptions from "../components/CustomSelectOptions";
 import camera from "../assets/camera.png";
 import play from "../assets/play.png";
-import copyBlack from "../assets/copy-black.svg";
-import copyWhite from "../assets/copy-white.svg";
+import stop from "../assets/stop.png";
 import add from "../assets/add.svg";
-
-import { utils, writeFile } from "xlsx";
-import { useCallback, useState } from "react";
-
-const Card = ({ order, onDelete }: { order: number; onDelete: () => void }) => {
-  const handleDelete = () => {
-    onDelete();
-  };
-  return (
-    <section className="mt-7">
-      <header className="flex justify-between items-center">
-        <h2 className="font-semibold">CARD {order + 1}</h2>
-        <button className="font-semibold" onClick={handleDelete}>
-          DEL
-        </button>
-      </header>
-      <main className="border-2 border-gray-400 rounded-lg p-2 pt-6 my-2">
-        <div className="relative flex items-center gap-4">
-          <img src={copyWhite} alt="copy icon" className="size-5" />
-          <input
-            type="text"
-            className="min-w-[93%] pb-2 border-b-2 border-gray-400 placeholder:font-semibold placeholder:text-lg focus:outline-none"
-            placeholder="TEXT (MAX 100Byte)"
-          />
-          <span className="absolute right-3 text-gray-300 top-[50%] translate-y-[-50%]">
-            EN
-          </span>
-        </div>
-        <div className="relative flex items-center gap-4 mt-5">
-          <img src={copyBlack} alt="copy icon" className="size-5" />
-          <input
-            type="text"
-            className="min-w-[93%] pb-2 border-b-2 border-gray-400 placeholder:font-semibold placeholder:text-lg focus:outline-none"
-            placeholder="TEXT (MAX 100Byte)"
-          />
-          <span className="absolute right-3 text-gray-800 top-[50%] translate-y-[-50%]">
-            KR
-          </span>
-        </div>
-      </main>
-    </section>
-  );
-};
 
 const Page59 = () => {
   const [selectedOption, setSelectedOption] =
     useState<string>("SPEAKING PRACTICE");
-  const [cards, setCards] = useState([...Array(2).keys()]);
+  const [cards, setCards] = useState([...Array(1).keys()]);
+  const [showImageModal, setShowImageModal] = useState<boolean>(false);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const deleteCard = (index: number) => {
     setCards((prevCards) => prevCards.filter((_, i) => i !== index));
@@ -61,6 +25,57 @@ const Page59 = () => {
 
   const handleSelectedOption = (option: string) => {
     setSelectedOption(option);
+  };
+
+  const openImageModal = () => {
+    setShowImageModal(true);
+  };
+
+  const closeImageModal = () => {
+    setShowImageModal(false);
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        setImageUrl(e.target?.result as string);
+      };
+
+      reader.readAsDataURL(file);
+
+      event.target.value = "";
+    }
+  };
+
+  const handleExcelUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+
+    if (
+      file
+      // && file.type === "application/wps-office.xlsx"
+    ) {
+      const reader = new FileReader();
+      console.log(file);
+
+      reader.onload = (e) => {
+        const data = new Uint8Array(e.target?.result as ArrayBuffer);
+        const workbook = XLSX.read(data, { type: "array" });
+        const wsname = workbook.SheetNames[0];
+        const ws = workbook.Sheets[wsname];
+        const json = XLSX.utils.sheet_to_json(ws);
+
+        console.log(json);
+      };
+
+      reader.readAsArrayBuffer(file);
+
+      event.target.value = "";
+    }
+    event.target.value = "";
   };
 
   const pres = [
@@ -76,12 +91,12 @@ const Page59 = () => {
   ];
 
   const exportFile = useCallback(() => {
-    const ws = utils.json_to_sheet(pres);
+    const ws = XLSX.utils.json_to_sheet(pres);
 
-    const wb = utils.book_new();
-    utils.book_append_sheet(wb, ws, "Data");
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Data");
 
-    writeFile(wb, "REPEAT_Voca Content.xlsx.xlsx");
+    XLSX.writeFile(wb, "REPEAT_Voca Content.xlsx.xlsx");
   }, [pres]);
 
   return (
@@ -239,17 +254,43 @@ const Page59 = () => {
                 <input className="w-full py-2 px-3 text-[20px] border border-gray-600" />
               </div>
 
-              <div className="flex items-center justify-between my-8">
-                <img src={camera} alt="Camera " className="size-8" />
-                <button>DEL</button>
+              <div className="flex items-center justify-between my-8 ">
+                <label htmlFor="languageImage" className="cursor-pointer">
+                  <img src={camera} alt="Camera " className="size-8" />
+                </label>
+                <input
+                  id="languageImage"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleImageUpload}
+                />
+                {imageUrl && (
+                  <button onClick={() => setImageUrl(null)}>DEL</button>
+                )}
               </div>
 
-              <div className="flex items-center justify-center h-[100px] w-full border border-slate-600 bg-slate-200">
-                {/* IMAGE SECTION */}
-                <div>
-                  <p>CONTENT</p>
-                  <p>IMAGE</p>
-                </div>
+              <div
+                className={`flex items-center justify-center ${
+                  imageUrl ? "h-[300px]" : "h-[100px]"
+                }  w-full border border-slate-600 bg-slate-200 transform transition-all ease-out duration-500`}
+              >
+                {imageUrl ? (
+                  <button
+                    className="transform transition-all ease-out duration-500 h-[300px] w-full cursor-pointer"
+                    onClick={openImageModal}
+                  >
+                    <img
+                      src={imageUrl}
+                      alt="image"
+                      className="object-cover h-full w-full"
+                    />
+                  </button>
+                ) : (
+                  <div>
+                    <p>CONTENT</p>
+                    <p>IMAGE</p>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center gap-3 my-8">
@@ -263,8 +304,16 @@ const Page59 = () => {
               </div>
 
               <div className="flex items-center justify-between mt-8 mb-2">
-                <button>EXCEL FILE UPLOAD</button>
-                {selectedOption === "practice" && (
+                <label htmlFor="excelUpload" className="cursor-pointer">
+                  EXCEL FILE UPLOAD
+                </label>
+                <input
+                  id="excelUpload"
+                  style={{ display: "none" }}
+                  type="file"
+                  onChange={handleExcelUpload}
+                />
+                {selectedOption === "SPEAKING PRACTICE" && (
                   <button>AUTO SEPARATE</button>
                 )}
               </div>
@@ -299,8 +348,16 @@ const Page59 = () => {
               )}
 
               <div className="flex items-center justify-end">
-                <button className="flex items-center justify-center px-3 py-2 mt-6 border-2 border-gray-600 rounded-md gap-1 ">
-                  <img src={play} className="size-6" />
+                <button
+                  className="flex items-center justify-center px-3 py-2 mt-6 border-2 border-gray-600 rounded-md gap-1 "
+                  onClick={() => setIsPlaying((prev) => !prev)}
+                >
+                  {isPlaying ? (
+                    <img src={stop} className="size-6" />
+                  ) : (
+                    <img src={play} className="size-6" />
+                  )}
+
                   <p>SPEAK IT</p>
                 </button>
               </div>
@@ -367,6 +424,11 @@ const Page59 = () => {
           </div>
         </div>
       </main>
+      <ImageViewModal
+        modalOpen={showImageModal}
+        handleCloseImageModal={closeImageModal}
+        imageUrl={imageUrl as string}
+      />
     </section>
   );
 };

@@ -200,7 +200,7 @@ const Page19 = () => {
                   </thead>
                   <tbody>
                     {page19Data.createdGroupData.map((group) => (
-                      <tr>
+                      <tr key={Math.random() * 1000}>
                         <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
                           {group.number}
                         </td>
@@ -256,7 +256,7 @@ const Page19 = () => {
                   </thead>
                   <tbody>
                     {page19Data.joinedGroupData.map((group) => (
-                      <tr>
+                      <tr key={Math.random() * 1000}>
                         <td className="px-3 py-1 border-2 border-gray-200 border-collapse">
                           {group.number}
                         </td>
@@ -302,7 +302,7 @@ const Page19 = () => {
                   </thead>
                   <tbody>
                     {page20Data.map((group) => (
-                      <tr>
+                      <tr key={Math.random() * 1000}>
                         <td className="px-3 py-1 border-b-2 border-gray-400 border-collapse">
                           {group.number}
                         </td>

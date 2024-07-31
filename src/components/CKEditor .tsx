@@ -31,8 +31,6 @@ const Editor = ({ initialData = "" }: { initialData?: string }) => {
             "underline",
             "fontFamily",
             "|",
-            "mention",
-            "|",
             "imageUpload",
             "|",
             "bulletedList",

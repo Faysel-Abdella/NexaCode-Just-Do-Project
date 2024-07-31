@@ -128,7 +128,7 @@ const Page48 = () => {
 
           <tbody>
             {rows.map((item, index) => (
-              <tr>
+              <tr key={Math.random() * 1000}>
                 <td className="border-2 border-gray-800 border-collapse w-[100px] h-[40px]">
                   <div className="flex items-center justify-center gap-1">
                     <button

@@ -14,6 +14,10 @@ const Page37 = ({
     setModalOpen(true);
   };
 
+  const handleCloseImageModal = () => {
+    setModalOpen(false);
+  };
+
   const [rows, _setRows] = useState([
     {
       id: 1,
@@ -164,7 +168,7 @@ const Page37 = ({
 
                     <tbody>
                       {rows.map((item) => (
-                        <tr>
+                        <tr key={Math.random() * 1000}>
                           <td className="border-2 border-gray-800 border-collapse text-center">
                             {item.id}
                           </td>
@@ -268,13 +272,13 @@ const Page37 = ({
         </main>
 
         {/* Modal for displaying image */}
-        <CustomModal isOpen={modalOpen} onClose={handleCloseModal}>
+        <CustomModal isOpen={modalOpen} onClose={handleCloseImageModal}>
           <section className="relative w-[600px] h-[500px] flex items-center justify-center  py-5 px-5 border-2 border-gray-600 shadow-lg shadow-gray-700 ">
             <div className="flex items-center justify-center ">IMAGE</div>
 
             <button
               className="absolute top-4 right-4"
-              onClick={handleCloseModal}
+              onClick={handleCloseImageModal}
             >
               X
             </button>
