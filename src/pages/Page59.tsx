@@ -19,6 +19,12 @@ const Page59 = () => {
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
+  const [selectedShare, setSelectedShare] = useState<string | null>(null);
+
+  const handleCheckboxChange = (value: string | null) => {
+    setSelectedShare(value === selectedShare ? null : value);
+  };
+
   const deleteCard = (index: number) => {
     setCards((prevCards) => prevCards.filter((_, i) => i !== index));
   };
@@ -383,6 +389,8 @@ const Page59 = () => {
                     type="checkbox"
                     id="share01"
                     className="mr-3 size-4 cursor-pointer"
+                    checked={selectedShare === "NOT Sharing"}
+                    onChange={() => handleCheckboxChange("NOT Sharing")}
                   />
                   <label htmlFor="share01" className="cursor-pointer">
                     NOT Sharing
@@ -394,6 +402,8 @@ const Page59 = () => {
                     type="checkbox"
                     id="share02"
                     className="mr-3 size-4 cursor-pointer"
+                    checked={selectedShare === "PUBLIC"}
+                    onChange={() => handleCheckboxChange("PUBLIC")}
                   />
                   <label htmlFor="share02" className="cursor-pointer">
                     PUBLIC
